@@ -1,0 +1,43 @@
+{
+  "kategoriak": [
+    {
+      "id": 1,
+      "nev": "kategoria1"
+    },
+    {
+      "id": 2,
+      "nev": "kategoria2"
+    },
+    {
+      "id": 3,
+      "nev": "kategoria3"
+    }
+  ],
+
+  "valamik": [
+    {
+      "id": 1,
+      "nev": "Valami1",
+      "kategoriaId": 2,
+      "ár": 9.5
+    },
+    {
+      "id": 2,
+      "nev": "Valami2",
+      "kategoriaId": 2,
+      "ár": 39.5
+    },
+    {
+      "id": 3,
+      "nev": "Valami3",
+      "kategoriaId": 1,
+      "ár": 29.5
+    },
+    {
+      "id": 4,
+      "nev": "Valami4",
+      "kategoriaId": 3,
+      "ár": 19.5
+    }
+  ]
+}
