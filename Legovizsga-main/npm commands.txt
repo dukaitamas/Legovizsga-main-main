@@ -1,0 +1,35 @@
+npm cache clean   
+
+npm cache clean --force
+
+npm install --cache /tmp/empty-cache
+
+npm cache verify
+
+npm notice New minor version of npm available! 10.5.0 -> 10.7.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v10.7.0
+npm notice Run npm install -g npm@10.7.0 to update!
+
+npm run dev
+
+npm i json-server   (install json server)
+
+npx i json-server legoJo.json or npx i json-server .\legoJo.json (to execute json server)
+
+npm init vue@latest (új filet hoz létre)
+
+node -v
+
+npm -v
+
+1 delete nodemodules and package-lock.json
+2 Run this command npm cache clean --force
+3 then go to npm-cache (path is shown in your error statement) and then delete that directory.
+4 install latest version on npm.
+5 then npm install and npm start
+If any error again comes then check which package is throwing error then change the version of 
+that package (version shown in the console error) in package.json. Then npm install and npm start.
+ Then you wile fine.
+
+
+
