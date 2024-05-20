@@ -4,7 +4,7 @@
       <div class="conatiner">
       <form class="row g-3">
       <div class="col-md-12">
-        <label for="inputEmail4" class="form-label">Felhasználó neve:</label>
+        <label for="inputEmail4" class="form-label">Email:</label>
         <input required type="email" class="form-control" id="inputEmail4">
       </div>
       <br>
@@ -19,7 +19,7 @@
       </div>
       
       <div class="col-12">
-        <button type="submit" class="btn btn-dark">Log in</button>
+        <button type="submit" class="btn btn-dark">Bejelentkezés</button>
       </div>
       </form>
         </div>

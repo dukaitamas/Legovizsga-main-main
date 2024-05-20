@@ -53,7 +53,7 @@ else{
       </div>
     
       <div class="col-12">
-        <button :disabled="buttonDisabled"   @click="ellenor" type="submit" class="btn btn-dark">Sign in</button>
+        <button :disabled="buttonDisabled"   @click="ellenor" type="submit" class="btn btn-dark">Regisztráció</button>
       </div>
       </form>
 

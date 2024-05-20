@@ -3,7 +3,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg p-2 " id="lel">
+  <nav class="navbar navbar-expand-lg p-2 my-0 mx-0" id="lel">
     <div class="container-fluid ">
       <a data-test="lego-logo" class="Linksstyles__Anchor-sc-684acv-0 friqQc MainBarstyles__LogoLink-p97gem-2 iWzzPM"
         href="/en-hu"><img src="https://assets.lego.com/logos/v4.5.0/brand-lego.svg" alt="LEGO" width="85" height="85"
@@ -33,8 +33,7 @@ import { RouterView } from "vue-router";
     </div>
   </nav>
   <router-view />
-
-  <div id="carouselExampleDark" class="carousel carousel-dark slide">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide mx-0 px-0 py-0 px-0">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
@@ -43,24 +42,24 @@ import { RouterView } from "vue-router";
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
-        <img src="" class="d-block w-100" alt="star-wars themed warplane">
+        <img src="./assets/css/images/star-wars warplane.jpeg" class="d-block  h-100 w-100" alt="star-wars themed warplane">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+          <h5>Star Wars űrhajó</h5>
+          <p class="carousel-text">A fanok által épített űrhajó egyszerűen fantasztikus.</p>
         </div>
       </div>
       <div class="carousel-item" data-bs-interval="2000">
-        <img src=" " class="d-block w-100" alt="...">
+        <img src="./assets/css/images/lego land rover classic defender.png" class="d-block  h-100 w-100" alt="land rover defender">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+          <h5>Land Rover Defender</h5>
+          <p class="carousel-text">Az eredeti gyári építésben sem lehet csalódni.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+        <img src="../src/assets/css/images/space satellite.png" class="d-block  h-100 w-100" alt="space satellite">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+          <h5>Az űrben is megállja a helyét ez a szatellit </h5>
+          <p class="carousel-text">Elon Musk starlinkje elbújhat e csoda mellett.</p>
         </div>
       </div>
     </div>

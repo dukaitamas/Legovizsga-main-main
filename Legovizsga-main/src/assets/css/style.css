@@ -16,6 +16,25 @@ header:hover {
 background-color:#ffd502 ;
 }
 
+h5{
+    color:#e3000b ;
+}
+
+.carousel-text{
+    color:#e3000b ;
+
+}
+
+/* #carouselExampleDark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100rem;
+    height: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
 /* *{
     background-color:#d0021b;
 } */
