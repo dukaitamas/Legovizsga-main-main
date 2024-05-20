@@ -3,7 +3,7 @@ import DataService from "../services/dataservice";
 import { ref, onMounted } from "vue";
 
 const kategoriak = ref([]);
-   const valamik = ref([]);
+  //  const valamik = ref([]);
 const keszletek = ref([]);
 const valasztottKategoriaId = ref();
 const kiválasztottKeszletek = ref([]);

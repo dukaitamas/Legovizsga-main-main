@@ -1,0 +1,21 @@
+
+#lol{
+    /* border-radius: 5px;
+    border-color: #d0021b;
+    border-width: thick; */
+    background-color:#e3000b;
+}
+
+header:hover {
+    -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, .6);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .6);
+    background-color: rgba(255, 255, 255, .25);
+}
+
+#lel{
+background-color:#ffd502 ;
+}
+
+/* *{
+    background-color:#d0021b;
+} */
