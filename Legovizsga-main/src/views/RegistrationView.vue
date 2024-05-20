@@ -32,7 +32,7 @@ else{
 
 <template>
   <div class="container">
-    <div><h3>Regisztrációs oldal</h3></div>
+    <div><h4>REGISZTRÁCIÓ</h4></div>
     <div class="conatiner">
       <form class="row g-3" @submit.prevent="onsubmit">
       <div class="col-md-12">

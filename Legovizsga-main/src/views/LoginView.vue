@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div><h3>Bejelentkezési oldal</h3></div>
+      <div><h4>BEJELENTKEZÉS</h4></div>
       <div class="conatiner">
       <form class="row g-3">
       <div class="col-md-12">
