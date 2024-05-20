@@ -55,7 +55,7 @@ else{
       </div>
       </form>
 
-      <div class="success ">{{ error }}</div>
+      <div class="success">{{ error }}</div>
     </div>
   </div>
 </template>
