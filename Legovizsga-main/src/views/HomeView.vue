@@ -29,6 +29,17 @@ DataService.getAllSets()
     console.log(err);
   });
 
+  // DataService.getAllSets()
+  //   .then((resp) => {
+  //     keszletek.value = resp.map(keszlet => ({
+  //       ...keszlet,
+  //       IMAGEURL: `http://127.0.0.1:8000/storage/images/${keszlet.id}.jpg`
+  //     }));
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
 const valaszto = () => {
   console.log("ok");
   // Ha a backend-en nincs olyan végpont, ami csak a kiválasztott id-jű elemeket adja vissza,
@@ -55,4 +66,11 @@ const valaszto = () => {
   <ul class="m-4">
     <li v-for="keszlet in kiválasztottKeszletek">{{ keszlet.setName }}</li>
   </ul>
+
+    <!-- <ul class="m-4">
+      <li v-for="keszlet in kiválasztottKeszletek" :key="keszlet.id">
+        <img :src="keszlet.IMAGEURL" alt="Kép">
+        <span>{{ keszlet.setName }}</span>
+      </li>
+    </ul> -->
 </template>
