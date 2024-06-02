@@ -8,9 +8,14 @@ const keszletek = ref([]);
 const valasztottKategoriaId = ref();
 const kiválasztottKeszletek = ref([]);
 
+// A ref() függvény segítségével Vue.js alkalmazásokban változókat 
+// hozhatsz létre, amelyek reaktívak lesznek.
+// A kategoriak egy ilyen reaktív változó, amely egy üres tömbre inicializálódik.
+
 onMounted(() => {
   // Ez akkor fut le, amikor betöltődik a HomeView komponens
 }),
+
   DataService.getAllThemes()
     .then((resp) => {
       kategoriak.value = resp;
@@ -20,6 +25,8 @@ onMounted(() => {
       console.log(err);
     });
 
+  
+
 DataService.getAllSets()
   .then((resp) => {
     keszletek.value = resp;
@@ -28,6 +35,8 @@ DataService.getAllSets()
   .catch((err) => {
     console.log(err);
   });
+
+
 
   // DataService.getAllSets()
   //   .then((resp) => {
@@ -40,6 +49,7 @@ DataService.getAllSets()
   //     console.log(err);
   //   });
 
+
 const valaszto = () => {
   console.log("ok");
   // Ha a backend-en nincs olyan végpont, ami csak a kiválasztott id-jű elemeket adja vissza,
@@ -49,12 +59,15 @@ const valaszto = () => {
   // ).id;
    console.log(keszletek.value);
   kiválasztottKeszletek.value = keszletek.value.filter(
-    (v) => v.themeId === valasztottKategoriaId.value
+    (k) => k.themeId === valasztottKategoriaId.value
   );
   console.log(kiválasztottKeszletek.value);
 
   // ha van megfelelő végpont (és kellene, hogy legyen) akkor használjuk azt a következőképpen:
 };
+
+
+
 </script>
 
 <template>

@@ -33,14 +33,14 @@ import { RouterView } from "vue-router";
     </div>
   </nav>
   <router-view />
-  <div id="carouselExampleDark" class="carousel carousel-dark slide mx-0 px-0 py-0 px-0">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide mx-0 px-0 py-0 px-0" >
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="max-height: 90vh">
       <div class="carousel-item active" data-bs-interval="10000">
         <img src="./assets/css/images/star-wars warplane.jpeg" class="d-block  h-100 w-100" alt="star-wars themed warplane">
         <div class="carousel-caption d-none d-md-block">
@@ -74,7 +74,7 @@ import { RouterView } from "vue-router";
   </div>
 
 
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-1 border-top fixed-bottom "
+  <footer class="d-flex flex-wrap justify-content-between align-items-center mt-0 py-3 fixed-bottom  border-top border-info border-3"
     id="lol">
     <div class="col-md-4 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
