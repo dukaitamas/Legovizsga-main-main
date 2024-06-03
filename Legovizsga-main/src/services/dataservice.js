@@ -11,7 +11,7 @@ export default {
     return Axios.get("/api/themes")
     // return Axios.get("/themes")  // Axios.defaults.baseURL = "http://localhost:3000"; for fake backend json server
       .then((resp) => {
-        //console.log(resp.data);
+        // console.log(resp.data);
         return resp.data;
       })
       .catch((err) => {
@@ -23,6 +23,17 @@ export default {
     return Axios.get("/api/sets")
     // return Axios.get("/sets")//  Axios.defaults.baseURL = "http://localhost:3000"; for fake backend json server
       .then((resp) => {
+        // console.log(resp.data);
+        return resp.data;
+      })
+      .catch((err) => {
+        //console.log(err);
+        return Promise.reject(err);
+      });
+  },
+  getSetsById(id) {
+    return Axios.get(`/api/sets/${id}`)
+      .then((resp) => {
         console.log(resp.data);
         return resp.data;
       })
@@ -31,17 +42,6 @@ export default {
         return Promise.reject(err);
       });
   },
-  // getValamiById(id) {
-  //   return Axios.get(`/valamik/${id}`)
-  //     .then((resp) => {
-  //       //console.log(resp.data);
-  //       return resp.data;
-  //     })
-  //     .catch((err) => {
-  //       //console.log(err);
-  //       return Promise.reject(err);
-  //     });
-  // },
   // saveUser(újobjektum) {
   //   return Axios.post("/valamik", újobjektum).then(() => {});
   // },

@@ -33,7 +33,8 @@ import { RouterView } from "vue-router";
     </div>
   </nav>
   <router-view />
-  <div id="carouselExampleDark" class="carousel carousel-dark slide mx-0 px-0 py-0 px-0" >
+
+  <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide mx-0 px-0 py-0 px-0" >
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
@@ -71,7 +72,7 @@ import { RouterView } from "vue-router";
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div> -->
 
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center mt-0 py-3 fixed-bottom  border-top border-info border-3"
@@ -87,7 +88,7 @@ import { RouterView } from "vue-router";
 
     <ul class="nav col-md-4 pe-5 justify-content-end list-unstyled d-flex">
 
-      <li class="ms-3"><a class="text-body-secondary" href="https://x.com/LEGO_Group">
+      <li class="ms-3"><a class=" links text-body-secondary" href="https://x.com/LEGO_Group">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x"
             viewBox="0 0 16 16">
             <path
@@ -95,7 +96,7 @@ import { RouterView } from "vue-router";
             <use xlink:href="#"></use>
           </svg>X-Twitter</a></li>
 
-      <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/lego/">
+      <li class="ms-3"><a class=" links text-body-secondary" href="https://www.instagram.com/lego/">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram"
             viewBox="0 0 16 16">
             <path
@@ -113,7 +114,7 @@ import { RouterView } from "vue-router";
 
 
       <!-- <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi bi-facebook" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li> -->
-      <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/LEGO/">
+      <li class="ms-3"><a class="links text-body-secondary" href="https://www.facebook.com/LEGO/">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook"
             viewBox="0 0 16 16">
             <path

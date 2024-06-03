@@ -3,7 +3,7 @@ import DataService from "../services/dataservice";
 import { ref, onMounted } from "vue";
 
 const kategoriak = ref([]);
-  //  const valamik = ref([]);
+//  const valamik = ref([]);
 const keszletek = ref([]);
 const valasztottKategoriaId = ref();
 const kiválasztottKeszletek = ref([]);
@@ -18,14 +18,14 @@ onMounted(() => {
 
   DataService.getAllThemes()
     .then((resp) => {
-      kategoriak.value = resp;
-      //console.log(kategoriak.value);
+      kategoriak.value = resp.data;
+      console.log(kategoriak.value);
     })
     .catch((err) => {
       console.log(err);
     });
 
-  
+
 
 DataService.getAllSets()
   .then((resp) => {
@@ -38,16 +38,16 @@ DataService.getAllSets()
 
 
 
-  // DataService.getAllSets()
-  //   .then((resp) => {
-  //     keszletek.value = resp.map(keszlet => ({
-  //       ...keszlet,
-  //       IMAGEURL: `http://127.0.0.1:8000/storage/images/${keszlet.id}.jpg`
-  //     }));
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
+// DataService.getAllSets()
+//   .then((resp) => {
+//     keszletek.value = resp.map(keszlet => ({
+//       ...keszlet,
+//       IMAGEURL: `http://127.0.0.1:8000/storage/images/${keszlet.id}.jpg`
+//     }));
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 
 const valaszto = () => {
@@ -57,10 +57,11 @@ const valaszto = () => {
   // valasztottKategoriaId.value = kategoriak.value.find(
   //   (k) => k.nev === valasztottKategoriaNev.value
   // ).id;
-   console.log(keszletek.value);
-  kiválasztottKeszletek.value = keszletek.value.filter(
+  console.log(keszletek.value.data);
+  kiválasztottKeszletek.value = keszletek.value.data.filter(
     (k) => k.themeId === valasztottKategoriaId.value
   );
+  // kiválasztottKeszletek.value = DataService.getSetsById(valasztottKategoriaId.value)
   console.log(kiválasztottKeszletek.value);
 
   // ha van megfelelő végpont (és kellene, hogy legyen) akkor használjuk azt a következőképpen:
@@ -75,15 +76,34 @@ const valaszto = () => {
     <option v-for="kategoria in kategoriak" :value="kategoria.id">{{ kategoria.name }}</option>
     <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
   </select>
-  {{valasztottKategoriaId}}
-  <ul class="m-4">
+  {{ valasztottKategoriaId }}
+  <!-- <ul class="m-4">
     <li v-for="keszlet in kiválasztottKeszletek">{{ keszlet.setName }}</li>
-  </ul>
+  </ul> -->
 
-    <!-- <ul class="m-4">
+  <div class="container text-center">
+    <div class="row">
+      <div v-for="keszlet in kiválasztottKeszletek" class="col">
+        <div class="card" style="width: 18rem;">
+          <img :src="keszlet.IMAGEURL" class="card-img-top img-fluid" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ keszlet.setName }}</h5>
+            <p class="card-text">{{ keszlet.subtheme }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <ul class="m-4">
       <li v-for="keszlet in kiválasztottKeszletek" :key="keszlet.id">
         <img :src="keszlet.IMAGEURL" alt="Kép">
         <span>{{ keszlet.setName }}</span>
       </li>
     </ul> -->
+
+
+
 </template>
