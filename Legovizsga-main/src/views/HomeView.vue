@@ -7,6 +7,7 @@ const kategoriak = ref([]);
 const keszletek = ref([]);
 const valasztottKategoriaId = ref();
 const kiválasztottKeszletek = ref([]);
+const kivalasztottTema = ref({});
 
 // A ref() függvény segítségével Vue.js alkalmazásokban változókat 
 // hozhatsz létre, amelyek reaktívak lesznek.
@@ -62,7 +63,13 @@ const valaszto = () => {
     (k) => k.themeId === valasztottKategoriaId.value
   );
   // kiválasztottKeszletek.value = DataService.getSetsById(valasztottKategoriaId.value)
-  console.log(kiválasztottKeszletek.value);
+  // console.log(kiválasztottKeszletek.value);
+  console.log(valasztottKategoriaId.value);
+
+
+  kivalasztottTema.value = kategoriak.value.find(k=>k.id === valasztottKategoriaId.value)
+
+  console.log(kivalasztottTema.value);
 
   // ha van megfelelő végpont (és kellene, hogy legyen) akkor használjuk azt a következőképpen:
 };
@@ -73,10 +80,14 @@ const valaszto = () => {
 
 <template>
   <select v-model="valasztottKategoriaId" @change="valaszto">
-    <option v-for="kategoria in kategoriak" :value="kategoria.id">{{ kategoria.name }}</option>
+    <option v-for="kategoria in kategoriak" :value="kategoria.id">{{ kategoria.name }} </option>
     <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
   </select>
+
+  <img :src="kivalasztottTema.IMAGEURL" alt="Kép">
   {{ valasztottKategoriaId }}
+
+
   <!-- <ul class="m-4">
     <li v-for="keszlet in kiválasztottKeszletek">{{ keszlet.setName }}</li>
   </ul> -->
@@ -85,7 +96,7 @@ const valaszto = () => {
     <div class="row">
       <div v-for="keszlet in kiválasztottKeszletek" class="col">
         <div class="card" style="width: 18rem;">
-          <img :src="keszlet.IMAGEURL" class="card-img-top img-fluid" alt="...">
+          <!-- <img :src="keszlet.IMAGEURL" class="card-img-top img-fluid" alt="..."> -->
           <div class="card-body">
             <h5 class="card-title">{{ keszlet.setName }}</h5>
             <p class="card-text">{{ keszlet.subtheme }}</p>
