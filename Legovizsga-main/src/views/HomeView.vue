@@ -2,16 +2,41 @@
 import DataService from "../services/dataservice";
 import { ref, onMounted } from "vue";
 
+
+
+
+
+// const valasztottKategoriaId = ref('');
+// const kategoriak = ref([
+//   { id: 1, name: 'Téma 1' },
+//   { id: 2, name: 'Téma 2' },
+//   { id: 3, name: 'Téma 3' }
+// ]);
+// const kategoriak = ref([]);
+// const keszletek = ref([]);
+
+// const kivalasztottTema = ref(null);
+// const kivalasztottKeszletek = ref([]);
+
+
+
+
+
+
 const kategoriak = ref([]);
-//  const valamik = ref([]);
+const valamik = ref([]);
 const keszletek = ref([]);
-const valasztottKategoriaId = ref();
+const valasztottKategoriaId = ref('');
 const kiválasztottKeszletek = ref([]);
 const kivalasztottTema = ref({});
 
 // A ref() függvény segítségével Vue.js alkalmazásokban változókat 
 // hozhatsz létre, amelyek reaktívak lesznek.
 // A kategoriak egy ilyen reaktív változó, amely egy üres tömbre inicializálódik.
+function valaszt() {
+  kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
+  // Töltsd be a megfelelő készleteket stb.
+};
 
 onMounted(() => {
   // Ez akkor fut le, amikor betöltődik a HomeView komponens
@@ -67,7 +92,7 @@ const valaszto = () => {
   console.log(valasztottKategoriaId.value);
 
 
-  kivalasztottTema.value = kategoriak.value.find(k=>k.id === valasztottKategoriaId.value)
+  kivalasztottTema.value = kategoriak.value.find(k => k.id === valasztottKategoriaId.value)
 
   console.log(kivalasztottTema.value);
 
@@ -76,16 +101,37 @@ const valaszto = () => {
 
 
 
+
+
 </script>
 
 <template>
-  <select v-model="valasztottKategoriaId" @change="valaszto">
-    <option v-for="kategoria in kategoriak" :value="kategoria.id">{{ kategoria.name }} </option>
-    <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
-  </select>
+  <div class=" text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic"> {{ valasztottKategoriaId }}
+    <!-- <select  class="fst-italic" placeholder="Kérem válasszon a témák közül!"  v-model="valasztottKategoriaId" @change="valaszto" >  -->
+    <select class="fst-italic" v-model="valasztottKategoriaId" @change="valaszto">
 
-  <img :src="kivalasztottTema.IMAGEURL" alt="Kép">
-  {{ valasztottKategoriaId }}
+      <option disabled value="">Kérem válasszon a témák közül!</option>
+
+      <option v-for="kategoria in kategoriak" :value="kategoria.id"> {{ kategoria.name }}</option>
+      <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
+    </select>
+  </div>
+
+  <div id="image">
+    <div class="container text-center mx-auto" v-if="kivalasztottTema && kivalasztottTema.IMAGEURL">
+      <!-- ezzel szúnik meg az ,hogy az üres képet kirakja a végére mikor nincs kiválasztva semmi sem -->
+      <img :src="kivalasztottTema.IMAGEURL" alt="Kép">
+      <!-- {{ valasztottKategoriaId }} -->
+    </div>
+  </div>
+
+
+  <!-- <div id="image">
+    <div    class="container text-center mx-auto">
+      <img :src="kivalasztottTema.IMAGEURL" alt="Kép" > -->
+  <!-- {{ valasztottKategoriaId }} -->
+  <!-- </div> -->
+  <!-- </div> -->
 
 
   <!-- <ul class="m-4">
@@ -95,12 +141,21 @@ const valaszto = () => {
   <div class="container text-center">
     <div class="row">
       <div v-for="keszlet in kiválasztottKeszletek" class="col">
-        <div class="card" style="width: 18rem;">
+        <div class="list" style="width: 18rem;">
           <!-- <img :src="keszlet.IMAGEURL" class="card-img-top img-fluid" alt="..."> -->
-          <div class="card-body">
-            <h5 class="card-title">{{ keszlet.setName }}</h5>
-            <p class="card-text">{{ keszlet.subtheme }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="card-body p-4">
+            <h5 class="card-title bold">Szettnév: {{ keszlet.setName }}</h5>
+            <p class="card-text">Altéma: {{ keszlet.subtheme }}</p>
+            <p class="card-text">Év: {{ keszlet.year }}</p>
+            <p class="card-text">Téma azonosító: {{ keszlet.themeId }}</p>
+            <p class="card-text">Szett száma: {{ keszlet.number }}</p>
+            <p class="card-text">Legofigurák száma: {{ keszlet.minifigs }}</p>
+            <p class="card-text">Lego darabszám: {{ keszlet.pieces }}</p>
+            <p class="card-text">Azonosító: {{ keszlet.id }}</p>
+
+
+
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
       </div>

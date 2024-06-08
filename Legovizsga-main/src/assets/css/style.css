@@ -30,6 +30,26 @@ h5{
 }
 
 
+.links:hover {
+    color: pink !important;
+}
+
+/* .backgroundall{
+    background-color: #e3000b;
+} */
+
+/* .links:active {
+    color: red !important;
+} */
+
+/* #image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 40vh;
+} */
+
 /* #carouselExampleDark{
     display: flex;
     justify-content: center;
