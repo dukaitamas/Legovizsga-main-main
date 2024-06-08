@@ -110,9 +110,11 @@ const valaszto = () => {
     <!-- <select  class="fst-italic" placeholder="Kérem válasszon a témák közül!"  v-model="valasztottKategoriaId" @change="valaszto" >  -->
     <select class="fst-italic" v-model="valasztottKategoriaId" @change="valaszto">
 
-      <option disabled value="">Kérem válasszon a témák közül!</option>
+      <option disabled value="" > Kérem válasszon a témák közül!</option>
 
       <option v-for="kategoria in kategoriak" :value="kategoria.id"> {{ kategoria.name }}</option>
+
+      <!-- <option v-for="kategoria in kategoriak" :value="kategoria.id"> {{ (valasztottKategoriaId) +" "+ kategoria.name }}</option> -->
       <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
     </select>
   </div>
