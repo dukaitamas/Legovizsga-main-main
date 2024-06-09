@@ -42,8 +42,12 @@ h5{
     background-color: #e3000b;
 } */
 
-/* .links:active {
-    color: red !important;
+.links:active {
+    color: black !important;
+}
+
+/* .links:visited {
+    color: black !important;
 } */
 
 /* #image{
