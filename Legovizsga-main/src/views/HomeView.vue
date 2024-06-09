@@ -33,7 +33,12 @@ const kivalasztottTema = ref({});
 // A ref() függvény segítségével Vue.js alkalmazásokban változókat 
 // hozhatsz létre, amelyek reaktívak lesznek.
 // A kategoriak egy ilyen reaktív változó, amely egy üres tömbre inicializálódik.
-function valaszt() {
+// function valaszt() {
+//   kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
+//   // Töltsd be a megfelelő készleteket stb.
+// };
+
+const valaszt = () => {
   kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
   // Töltsd be a megfelelő készleteket stb.
 };
@@ -106,13 +111,16 @@ const valaszto = () => {
 </script>
 
 <template>
-  <div class=" text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic"> {{ valasztottKategoriaId }}
+  <div class=" text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic">
+    <!-- {{ valasztottKategoriaId }} -->
     <!-- <select  class="fst-italic" placeholder="Kérem válasszon a témák közül!"  v-model="valasztottKategoriaId" @change="valaszto" >  -->
     <select class="fst-italic" v-model="valasztottKategoriaId" @change="valaszto">
 
       <option disabled value="" > Kérem válasszon a témák közül!</option>
-
-      <option v-for="kategoria in kategoriak" :value="kategoria.id"> {{ kategoria.name }}</option>
+      <option v-for="kategoria in kategoriak" :value="kategoria.id"> 🗂️{{ kategoria.id }}  𓏠 
+       {{ kategoria.name }} 👷</option>
+      <!-- &xrarr;lightarrow &middot;kicsi pötty ascii kódok , ○ ● ■ ☼   -->
+      <!-- 🃟 🃏 🂿 kártyákat ,emojikat engedi betenni a legördülő listába de képet nem pl: <img src="../assets/css/images/lego-piece-14501.png" alt=""> -->
 
       <!-- <option v-for="kategoria in kategoriak" :value="kategoria.id"> {{ (valasztottKategoriaId) +" "+ kategoria.name }}</option> -->
       <!-- //:value="kategoria.id az id számait írja ki nem a nevét -->
@@ -175,3 +183,4 @@ const valaszto = () => {
 
 
 </template>
+♦
