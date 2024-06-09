@@ -107,13 +107,13 @@ const register = () => {
       <br>
       <div class="col-md-12">
         <label for="inputEmail4" class="form-label">Email:</label>
-          <input v-model="email" required type="email" class="form-control" id="inputEmail4"
+          <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email"
             placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
       </div>
       <br>
       <div class="col-md-12">
         <label for="inputPassword4" class="form-label">Jelszó:</label>
-          <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4"
+          <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4" autocomplete="current-password"
             placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
       </div>
     
