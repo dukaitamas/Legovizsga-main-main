@@ -31,8 +31,8 @@ else{
 
 
 <template>
-  <div class="container">
-    <div><h4>REGISZTRÁCIÓ</h4></div>
+  <div class="container" p-2>
+    <div class="p-3"><h4>REGISZTRÁCIÓ</h4></div>
     <div class="conatiner">
       <form class="row g-3" @submit.prevent="onsubmit">
       <div class="col-md-12">
@@ -52,7 +52,7 @@ else{
             placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
       </div>
     
-      <div class="col-12">
+      <div class="col-12 p-3">
         <button :disabled="buttonDisabled"   @click="ellenor" type="submit" class="btn btn-dark">Regisztráció</button>
       </div>
       </form>

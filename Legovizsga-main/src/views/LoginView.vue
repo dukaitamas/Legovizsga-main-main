@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-      <div><h4>BEJELENTKEZÉS</h4></div>
+    <div class="container" >
+      <div class="p-3"><h4>BEJELENTKEZÉS</h4></div>
       <div class="conatiner">
       <form class="row g-3">
       <div class="col-md-12">
@@ -18,8 +18,8 @@
         <input required type="password" class="form-control" id="inputPassword4">
       </div>
       
-      <div class="col-12">
-        <button type="submit" class="btn btn-dark">Bejelentkezés</button>
+      <div class="col-12 p-3" >
+        <button type="submit" class="btn btn-dark" >Bejelentkezés</button>
       </div>
       </form>
         </div>
