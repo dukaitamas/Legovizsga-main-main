@@ -106,7 +106,7 @@ const register = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 /* Add any necessary styling here */
 .success {
   color: green;
@@ -116,6 +116,12 @@ const register = () => {
 }
 .errors {
   color: red;
+}
+
+.success,
+.error {
+  padding-bottom: 10px; 
+  font-size: 18px; 
 }
 </style>
 

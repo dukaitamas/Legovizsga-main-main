@@ -1,6 +1,28 @@
 <script setup>
 import DataService from "../services/dataservice";
 import { ref, onMounted } from "vue";
+import axios from 'axios';
+
+
+// pagination próbálkozás
+// export default {
+//   data() {
+//     return {
+//       sets: [],
+//       pagination: {}
+//     }
+//   },
+//   methods: {
+//     async fetchSets(page = 1) {
+//       const response = await axios.get(`http://localhost:8000/api/sets?page=${page}`);
+//       this.sets = response.data.data;
+//       this.pagination = response.data.meta;
+//     }
+//   },
+//   created() {
+//     this.fetchSets();
+//   }
+// }
 
 
 
