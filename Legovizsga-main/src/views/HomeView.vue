@@ -30,6 +30,15 @@ const valasztottKategoriaId = ref('');
 const kiválasztottKeszletek = ref([]);
 const kivalasztottTema = ref({});
 
+// function decodeHtmlEntities(str) {
+//     var txt = document.createElement("textarea");
+//     txt.innerHTML = str;
+//     return txt.value;
+// }
+
+// let decodedStr = decodeHtmlEntities("This is an example: &#039;");
+// console.log(decodedStr);
+
 // A ref() függvény segítségével Vue.js alkalmazásokban változókat 
 // hozhatsz létre, amelyek reaktívak lesznek.
 // A kategoriak egy ilyen reaktív változó, amely egy üres tömbre inicializálódik.
@@ -43,9 +52,28 @@ const valaszt = () => {
   // Töltsd be a megfelelő készleteket stb.
 };
 
+// const valaszt = () => {
+//   kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
+//   kiválasztottKeszletek.value = keszletek.value.filter(keszlet => keszlet.themeId === valasztottKategoriaId.value);
+// };
+
 onMounted(() => {
   // Ez akkor fut le, amikor betöltődik a HomeView komponens
-}),
+
+//   DataService.getAllThemes()
+//     .then((resp) => {
+//       kategoriak.value = resp.data.map(kategoria => {
+//         return {
+//           ...kategoria,
+//           name: decodeHtmlEntities(kategoria.name)
+//         };
+//       });
+//       console.log(kategoriak.value);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+// });
+});
 
   DataService.getAllThemes()
     .then((resp) => {
@@ -56,11 +84,18 @@ onMounted(() => {
       console.log(err);
     });
 
-
+ 
 
 DataService.getAllSets()
   .then((resp) => {
     keszletek.value = resp;
+    // keszletek.value = resp.data.map(keszlet => {
+    //     return {
+    //       ...keszlet,
+    //       setName: decodeHtmlEntities(keszlet.setName),
+    //       subtheme: decodeHtmlEntities(keszlet.subtheme)
+    //     };
+    //   });
     //console.log(keszletek.value);
   })
   .catch((err) => {
@@ -183,4 +218,3 @@ const valaszto = () => {
 
 
 </template>
-♦
