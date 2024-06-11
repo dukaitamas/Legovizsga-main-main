@@ -47,15 +47,15 @@ const kivalasztottTema = ref({});
 //   // Töltsd be a megfelelő készleteket stb.
 // };
 
-const valaszt = () => {
-  kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
-  // Töltsd be a megfelelő készleteket stb.
-};
-
 // const valaszt = () => {
 //   kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
-//   kiválasztottKeszletek.value = keszletek.value.filter(keszlet => keszlet.themeId === valasztottKategoriaId.value);
+//   // Töltsd be a megfelelő készleteket stb.
 // };
+
+const valaszt = () => {
+  kivalasztottTema.value = kategoriak.value.find(kategoria => kategoria.id === valasztottKategoriaId.value);
+  kiválasztottKeszletek.value = keszletek.value.filter(keszlet => keszlet.themeId === valasztottKategoriaId.value);
+};
 
 onMounted(() => {
   // Ez akkor fut le, amikor betöltődik a HomeView komponens

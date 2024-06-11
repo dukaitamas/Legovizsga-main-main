@@ -1,4 +1,126 @@
+
 <script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+
+// State variables
+const userName = ref("");
+const email = ref("");
+const password = ref("");
+const password_confirmation = ref("");
+const error = ref("");
+const buttonDisabled = ref(true); // Initially set to true to prevent form submission
+const errors = ref({});
+const successMessage = ref(""); // For success message
+
+// Methods
+const ell = () => {
+  if (password.value.length >= 8) {
+    buttonDisabled.value = false;
+  } else {
+    buttonDisabled.value = true;
+  }
+};
+
+const ellenor = () => {
+  if (password.value.length < 8) {
+    error.value = 'A jelszónak legalább 8 karakter hosszúnak kell lennie!';
+  } else {
+    error.value = '';
+  }
+};
+
+const register = () => {
+  ellenor(); // Perform validation before sending the request
+  if (!error.value) { // Proceed only if there is no error
+    axios.post('http://127.0.0.1:8000/api/register', {
+      name: userName.value,
+      email: email.value,
+      password: password.value,
+      password_confirmation: password_confirmation.value,
+    })
+    .then(response => {
+      console.log('Registration successful', response.data);
+      successMessage.value = 'A regisztráció sikeres'; // Set success message
+      // Clear form fields
+      userName.value = '';
+      email.value = '';
+      password.value = '';
+      password_confirmation.value = '';
+    })
+    .catch(err => {
+      if (err.response && err.response.status === 422) {
+        // Customize error messages
+        errors.value = {};
+        for (const key in err.response.data.errors) {
+          if (err.response.data.errors[key].includes("The email has already been taken.")) {
+            errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
+          } else {
+            errors.value[key] = err.response.data.errors[key];
+          }
+        }
+      }
+    });
+  }
+};
+</script>
+
+<template>
+  <div class="container" p-2>
+    <div class="p-3"><h4>REGISZTRÁCIÓ</h4></div>
+    <div class="container">
+      <form class="row g-3" @submit.prevent="register">
+        <div class="col-md-12">
+          <label for="inputName" class="form-label">Felhasználó neve:</label>
+          <input v-model="userName" required type="text" class="form-control" id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
+        </div>
+        <br>
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label">Email:</label>
+          <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email"
+            placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
+        </div>
+        <br>
+        <div class="col-md-12">
+          <label for="inputPassword4" class="form-label">Jelszó:</label>
+          <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4" autocomplete="current-password"
+            placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
+        </div>
+        <div class="col-md-12">
+          <label for="inputPasswordConfirmation" class="form-label">Jelszó megerősítése:</label>
+          <input v-model="password_confirmation" required type="password" class="form-control" id="inputPasswordConfirmation" autocomplete="current-password"
+            placeholder="Kérem erősítse meg a jelszót!">
+        </div>
+        <div class="col-12 p-3">
+          <button :disabled="buttonDisabled" type="submit" class="btn btn-dark">Regisztráció</button>
+        </div>
+      </form>
+      <div class="success" v-if="successMessage">{{ successMessage }}</div>
+      <div class="error">{{ error }}</div>
+      <div v-if="Object.keys(errors).length" class="errors">
+        <ul>
+          <li v-for="(err, key) in errors" :key="key">{{ err[0] }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+/* Add any necessary styling here */
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+.errors {
+  color: red;
+}
+</style>
+
+
+<!-- <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
 
@@ -88,7 +210,7 @@ const register = () => {
       </div>
     </div>
   </div>
-</template>
+</template> -->
 
 
 
