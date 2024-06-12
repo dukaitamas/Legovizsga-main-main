@@ -43,9 +43,13 @@ export default {
       });
   },
   // saveUser(újobjektum) {
-  //   return Axios.post("/valamik", újobjektum).then(() => {});
+  //  return Axios.post("/valamik", újobjektum).then(() => {});
   // },
   // updateUser(módosítottObjektum, id) {
   //   return Axios.put(`/valamik/${id}`, módosítottObjektum).then(() => {});
   // },
+  
 };
+
+// const API_URL = 'http://127.0.0.1:8000/api';
+
