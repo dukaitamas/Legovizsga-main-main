@@ -15,18 +15,18 @@ import { RouterView } from "vue-router";
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse p-3" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2  mb-lg-0 fs-4 fw-semibold">
+          <ul class="navbar-nav me-auto mb-2  mb-lg-0 fs-1 fw-semibold">
             <li class="nav-item">
               <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-              <router-link class="nav-link active" to="/">LEGO KÉSZLETEK</router-link>
+              <router-link class=" honk nav-link active " to="/">LEGO KÉSZLETEK</router-link>
             </li>
             <li class="nav-item">
               <!-- <a class="nav-link" href="#">Link</a> -->
-              <router-link class="nav-link" to="/registration">REGISZTRÁCIÓ</router-link>
+              <router-link class=" honk nav-link" to="/registration">REGISZTRÁCIÓ</router-link>
             </li>
             <li class="nav-item">
               <!-- <a class="nav-link" href="#">Link</a> -->
-              <router-link class="nav-link" to="/login">BEJELENTKEZÉS</router-link>
+              <router-link class="honk nav-link" to="/login">BEJELENTKEZÉS</router-link>
             </li>
           </ul>
         </div>

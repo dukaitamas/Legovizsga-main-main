@@ -71,3 +71,33 @@ h5{
 /* *{
     background-color:#d0021b;
 } */
+
+/* // <uniquifier>: Use a unique and descriptive class name */
+
+/* .honk {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    /* "MORF" 15, */
+    /* "MORF" 10,
+    "SHLN" 50;
+    
+} */ 
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <morph>: Use a value from 0 to 45
+// <shadow length>: Use a value from 0 to 100 */
+
+.honk {
+    
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 25,
+    "SHLN" 13;
+}

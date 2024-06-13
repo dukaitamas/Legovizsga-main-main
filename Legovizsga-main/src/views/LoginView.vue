@@ -35,7 +35,7 @@ const login = () => {
 
 <template>
   <div class="container" p-2>
-    <div class="p-3"><h4>BEJELENTKEZÉS</h4></div>
+    <div class="p-3"><h4 class="honk fs-1">BEJELENTKEZÉS</h4></div>
     <div class="container">
       <form class="row g-3" @submit.prevent="login">
         <div class="col-md-12">
@@ -50,7 +50,7 @@ const login = () => {
             placeholder="Kérem írja be a jelszavát!">
         </div>
         <div class="col-12 p-3">
-          <button type="submit" class="btn btn-dark">Bejelentkezés</button>
+          <button type="submit" class="honk fs-5 btn btn-dark">Bejelentkezés</button>
         </div>
       </form>
       <div class="success" v-if="successMessage">{{ successMessage }}</div>
