@@ -218,7 +218,7 @@ const valaszto = () => {
   <div class=" text-center mx-auto fs-4 bg-primary  w-100 py-2 fst-italic ">
     <!-- {{ valasztottKategoriaId }} -->
     <!-- <select  class="fst-italic" placeholder="Kérem válasszon a témák közül!"  v-model="valasztottKategoriaId" @change="valaszto" >  -->
-    <select class="honk bg-success p-2 text-dark bg-opacity-25 border-warning border border-3 rounded-2" v-model="valasztottKategoriaId" @change="valaszto">
+    <select class="nabla bg-success p-2 text-dark bg-opacity-75 border-warning border border-3 rounded-2" v-model="valasztottKategoriaId" @change="valaszto">
 
       <option disabled value="" > Kérem válasszon a témák közül!</option>
       <option v-for="kategoria in kategoriak" :value="kategoria.id"> 🗂️{{ kategoria.id }}  𓏠 
@@ -258,7 +258,7 @@ const valaszto = () => {
         <div class="list" style="width: 18rem;">
           <!-- <img :src="keszlet.IMAGEURL" class="card-img-top img-fluid" alt="..."> -->
           <div class="card-body p-4">
-            <h5 class="honk card-title bold">Szettnév: {{ keszlet.setName }}</h5>
+            <h5 class="honk card-title bold fs-2 fst-italic shadow-lg border-success border border-3 rounded-2 bg-dark bg-opacity-10" style="--bs-border-opacity: .1;">Szettnév: {{ keszlet.setName }}</h5>
             <p class="card-text">Altéma: {{ keszlet.subtheme }}</p>
             <p class="card-text">Év: {{ keszlet.year }}</p>
             <p class="card-text">Téma azonosító: {{ keszlet.themeId }}</p>

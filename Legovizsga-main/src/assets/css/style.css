@@ -1,3 +1,18 @@
+/* @font-face{
+    font-family: "LEGO" !important;
+    src: url("/Lego_Font/LEGO.ttf") !important;
+}
+
+.LEGOTTF{
+    font-family: "LEGO", sans-serif;
+    font-size: 2rem;
+} */
+
+/* body{
+    font-family: "LEGO", sans-serif !important;
+    font-size: 2rem;
+
+} */
 
 #lol{
     /* border-radius: 5px;
@@ -101,3 +116,36 @@ h5{
     "MORF" 25,
     "SHLN" 13;
 }
+
+/* .ohnosoftie {
+    font-size: 2vh;
+    font-family: "ohno-softie-variable" ,sans-serif;
+    font-style: normal;
+    font-variation-settings: 'wght' 900;
+
+  }  */
+
+  /* adobefonts above  */
+
+
+  /* // <uniquifier>: Use a unique and descriptive class name
+// <extrusion depth>: Use a value from 0 to 200
+// <edge highlight>: Use a value from 0 to 24 */
+
+.nabla {
+    color: #e3000b !important;
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 18,
+    "EHLT" 24;
+}
+
+/* .border-success {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  } */
+
+  /* rgb  25, 135, 84 */
