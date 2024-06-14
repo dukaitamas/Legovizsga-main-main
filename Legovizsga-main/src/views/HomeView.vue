@@ -232,9 +232,9 @@ const valaszto = () => {
   </div>
 
   <div id="image">
-    <div class="container text-center mx-auto" v-if="kivalasztottTema && kivalasztottTema.IMAGEURL">
+    <div class="container text-center mx-auto " v-if="kivalasztottTema && kivalasztottTema.IMAGEURL">
       <!-- ezzel szúnik meg az ,hogy az üres képet kirakja a végére mikor nincs kiválasztva semmi sem -->
-      <img :src="kivalasztottTema.IMAGEURL" alt="Kép">
+      <img :src="kivalasztottTema.IMAGEURL" class="img-fluid" alt="Kép">
       <!-- {{ valasztottKategoriaId }} -->
     </div>
   </div>
