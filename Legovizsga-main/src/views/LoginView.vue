@@ -44,18 +44,19 @@ const login = () => {
 </script>
 
 <template>
-  <div class="container" p-2>
-    <div class="p-3"><h4 class="honk fs-1">BEJELENTKEZÉS</h4></div>
-    <div class="container">
+  <div class="login-page" p-2>
+    <div class="form-container">
+      <h4 class="honk fs-1 bg-light bg-opacity-10 p-0 m-0">BEJELENTKEZÉS</h4></div>
+    <div class="container w-25">
       <form class="row g-3" @submit.prevent="login">
         <div class="col-md-12">
-          <label for="inputEmail" class="form-label">Email:</label>
+          <label for="inputEmail" class="form-label fs-5 text-light fw-bold">Email:</label>
           <input v-model="email" required type="email" class="form-control" id="inputEmail" autocomplete="email"
             placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
         </div>
         <br>
         <div class="col-md-12">
-          <label for="inputPassword" class="form-label">Jelszó:</label>
+          <label for="inputPassword" class="form-label fs-5 text-light fw-bold">Jelszó:</label>
           <input v-model="password" required type="password" class="form-control" id="inputPassword" autocomplete="current-password"
             placeholder="Kérem írja be a jelszavát!">
         </div>
@@ -70,7 +71,29 @@ const login = () => {
 </template>
 
 <style scoped>
+/* csak erre az oldalra vonatkozik az itt megadott stlye ha scopedre van állítva */
 /* Add any necessary styling here */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('@/assets\css\images\space satellite.png');
+  /* C:\Users\tomi2\Legovizsga-main-main\Legovizsga-main\src\assets\css\images\space satellite.png */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Fehér háttér, hogy kiemelje a formot */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2;
+  position: relative;
+}
 .success {
   color: green;
 }

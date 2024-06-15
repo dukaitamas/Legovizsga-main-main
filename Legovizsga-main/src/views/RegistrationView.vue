@@ -66,28 +66,29 @@ const register = () => {
 </script>
 
 <template>
-  <div class="container " p-2>
-    <div class="  p-3"><h4 class="honk fs-1">REGISZTRÁCIÓ</h4></div>
-    <div class="container">
+  <div class="registration-page" p-2>
+    <div class="form-container  p-3">
+      <h4 class="honk form-container fs-1 ">REGISZTRÁCIÓ</h4></div>
+    <div class="container w-25">
       <form class="row g-3" @submit.prevent="register">
         <div class="col-md-12">
-          <label for="inputName" class="form-label">Felhasználó neve:</label>
+          <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
           <input v-model="userName" required type="text" class="form-control" id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
         </div>
         <br>
         <div class="col-md-12">
-          <label for="inputEmail4" class="form-label">Email:</label>
+          <label for="inputEmail4" class="form-label fs-5 text-light fw-bold">Email:</label>
           <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email"
             placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
         </div>
         <br>
         <div class="col-md-12">
-          <label for="inputPassword4" class="form-label">Jelszó:</label>
+          <label for="inputPassword4" class="form-label fs-5 text-light fw-bold">Jelszó:</label>
           <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4" autocomplete="current-password"
             placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
         </div>
         <div class="col-md-12">
-          <label for="inputPasswordConfirmation" class="form-label">Jelszó megerősítése:</label>
+          <label for="inputPasswordConfirmation" class="form-label fs-5 text-light fw-bold">Jelszó megerősítése:</label>
           <input v-model="password_confirmation" required type="password" class="form-control" id="inputPasswordConfirmation" autocomplete="current-password"
             placeholder="Kérem erősítse meg a jelszót!">
         </div>
@@ -108,6 +109,33 @@ const register = () => {
 
 <style scoped>
 /* Add any necessary styling here */
+
+.registration-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('@/assets/css/images/star-wars warplane.jpeg');
+  /* a @ a vue-ben az src mappát jelenti ezért @/assets=src/assets */
+  /* background-image: url('@//assets/css/images/space/satellite.png'); */
+  /* background-image: url('/Legovizsga-main/src/assets/css/images/space/satellite.png'); */
+/* ez pedig az abszolút elérési út ha szükséges lehet tenni egy !important   background-image: url('@/assets/css/images/star-wars warplane.jpeg') !important;
+végére */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Fehér háttér, hogy kiemelje a formot */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2;
+  position: relative;
+  /* width: 100%; */
+  max-width: 500px;
+}
 .success {
   color: green;
 }
