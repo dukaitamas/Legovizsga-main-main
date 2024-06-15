@@ -8,27 +8,42 @@ const router = useRouter();
 
 const logout = () => {
   isLoggedIn.value = false;
-  // További kijelentkezési logika itt
-  router.push('/login');
+  //  kijelentkezési logika 
+  // router.push('/login');
+
+   // URL history reset
+   router.replace('/login');
+  window.location.replace('/'); 
+  // Frissíti az oldalt, és törli az előző oldalakat a history-ból
 };
 </script>
 
 
+
+
 <template>
+
+  
   <div class="homepage-container">
+
     <div class="search-content-container">
+    
       <div class="search-container">
         <input type="text" placeholder="Keresés..." class="search-input" />
       </div>
-      <div class="content">
-        <h1>Üdvözöljük a LEGO weboldalon!</h1>
-        <p>Itt találja a legjobb LEGO készleteket.</p>
-      </div>
+     
       <div class="logout-container">
         <button @click="logout" class="logout-button">Kijelentkezés</button>
       </div>
+
+      <div class="content">
+      <h1>Üdvözöljük a LEGO weboldalon!</h1>
+      <p>Itt találja a legjobb LEGO készleteket.</p>
     </div>
-    <!-- További tartalom itt, ha szükséges -->
+
+    </div>
+    
+    
   </div>
 </template>
 
@@ -47,42 +62,39 @@ const logout = () => {
   width: 100%;
 }
 
-.search-container  .logout-container{
+.search-container, .logout-container{
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 20px;
 }
 
-.search-input  .logout-button{
+.search-input, .logout-button{
   width: 200px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 
-.logout-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+
 
 .logout-button {
   padding: 10px 20px;
   border: none;
   background-color: #ff4d4d;
   color: white;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 .logout-button:hover {
-  background-color: #ff1a1a;
+  background-color: #da1818;
 }
 
 .content {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 </style>
