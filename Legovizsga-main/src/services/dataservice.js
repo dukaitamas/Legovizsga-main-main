@@ -6,6 +6,8 @@ Axios.defaults.baseURL = "http://localhost:8000";
 // npm i json-server és npx json-server C:\Users\tomi2\Legovizsga-main-main\Legovizsga-main\legoJo.json
 // npx i json-server legoJo.json frontend fake backend database server
 
+const API_URL = 'http://127.0.0.1:8000/api';
+
 export default {
   getAllThemes() {
     return Axios.get("/api/themes")
@@ -48,8 +50,18 @@ export default {
   // updateUser(módosítottObjektum, id) {
   //   return Axios.put(`/valamik/${id}`, módosítottObjektum).then(() => {});
   // },
-  
+  getAllThemes() {
+    return Axios.get(`${API_URL}/themes`);
+  },
+  getAllSets(page = 1) {
+    return Axios.get(`${API_URL}/sets?page=${page}`);
+  }
+
+
+
 };
 
 // const API_URL = 'http://127.0.0.1:8000/api';
+
+
 
