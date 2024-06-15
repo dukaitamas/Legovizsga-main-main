@@ -1,12 +1,17 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
 
 // State variables
 const email = ref("");
 const password = ref("");
 const error = ref("");
 const successMessage = ref("");
+
+// Router instance
+const router = useRouter();
 
 // Methods
 const login = () => {
@@ -22,6 +27,11 @@ const login = () => {
     console.log('Login successful', response.data);
     successMessage.value = 'Sikeres bejelentkezés!';
     // Handle successful login, e.g., redirect the user, store token, etc.
+    router.push({ name: 'Loginolva' });
+    // ez a router push hívja meg a  { path: '/home',
+    //   name: "Loginolva",
+    //    component: HomePage } az index.js-ből amikor a belépés gombra kattintva HomePage.vue-ra visz az oldal
+
   })
   .catch(err => {
     if (err.response && err.response.status === 401) {
