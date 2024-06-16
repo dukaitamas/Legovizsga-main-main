@@ -1,4 +1,3 @@
-
 <!-- <script setup>
 import { useRouter } from 'vue-router';
 import { ref , onMounted, computed} from 'vue';
@@ -228,42 +227,39 @@ const logout = () => {
 
 <template>
   <div class="container">
-    <aside class="sidebar">
-      <!-- <div class="search-container">
-        <input type="text" placeholder="Keresés..." class="search-input my-0" />
-      </div> -->
 
-      <div>
-    <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input my-0" />
-    <div v-if="results.sets.length || results.themes.length">
-      <h3>Szettek:</h3>
-      <ul v-if="results.sets.length">
-        <li v-for="set in results.sets" :key="set.id">{{ set.setName }}</li>
-      </ul>
-      <h3>Témák:</h3>
-      <ul v-if="results.themes.length">
-        <li v-for="theme in results.themes" :key="theme.id">{{ theme.name }}</li>
-      </ul>
-    </div>
-  </div>
-
-      <div class="logout-container">
-        <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
+    <div class="top-bar">
+      <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input mb-4" />
+      <div v-if="results.sets.length || results.themes.length">
+        <h3>Szettek:</h3>
+        <ul v-if="results.sets.length">
+          <li v-for="set in results.sets" :key="set.id">{{ set.setName }}</li>
+        </ul>
+        <h3>Témák:</h3>
+        <ul v-if="results.themes.length">
+          <li v-for="theme in results.themes" :key="theme.id">{{ theme.name }}</li>
+        </ul>
       </div>
-    </aside>
+    </div>
 
 
-    <main class="main-content">
+    <div class="logout-container">
+      <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
+    </div>
+
+
+
+    <div class="main-content">
       <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
       <div class="content">
         <h1>Üdvözöljük a LEGO weboldalon!</h1>
         <p>Itt találja a legjobb LEGO készleteket.</p>
       </div>
-    </main>
+    </div>
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .container {
   display: flex;
 }
@@ -284,7 +280,8 @@ const logout = () => {
   padding: 20px;
 }
 
-.search-container, .logout-container {
+.search-container,
+.logout-container {
   margin-bottom: 20px;
 }
 
@@ -323,4 +320,54 @@ h1 {
 p {
   font-size: 1.2rem;
 }
+</style> -->
+
+<style scoped>
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: yellow;
+  padding: 10px;
+}
+
+.search-input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 11px;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+}
+
+.logout-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-radius: 11px;
+}
+
+.logout-button:hover {
+  background-color: #da1818;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px); /* Adjust according to the height of the top bar */
+}
+
+.calendly-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-radius: 11px;
+  background-color: white;
+}
+
 </style>
+

@@ -29,6 +29,42 @@ const ellenor = () => {
   }
 };
 
+// const register = () => {
+//   ellenor(); // Perform validation before sending the request
+//   if (!error.value) { // Proceed only if there is no error
+//     axios.post('http://127.0.0.1:8000/api/register', {
+//       name: userName.value,
+//       email: email.value,
+//       password: password.value,
+//       password_confirmation: password_confirmation.value,
+//     })
+//       .then(response => {
+//         console.log('Registration successful', response.data);
+//         successMessage.value = 'A regisztráció sikeres!'; // Set success message
+//         // Clear form fields
+//         userName.value = '';
+//         email.value = '';
+//         password.value = '';
+//         password_confirmation.value = '';
+//       })
+//       .catch(err => {
+//         if (err.response && err.response.status === 422) {
+//           // Customize error messages
+//           errors.value = {};
+//           for (const key in err.response.data.errors) {
+//             if (err.response.data.errors[key].includes("The email has already been taken.")) {
+//               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
+//             } else if (err.response.data.errors[key].includes("The password confirmation does not match.")) {
+//               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
+//             } else {
+//               errors.value[key] = err.response.data.errors[key];
+//             }
+//           }
+//         }
+//       });
+//   }
+// };
+
 const register = () => {
   ellenor(); // Perform validation before sending the request
   if (!error.value) { // Proceed only if there is no error
@@ -54,7 +90,7 @@ const register = () => {
           for (const key in err.response.data.errors) {
             if (err.response.data.errors[key].includes("The email has already been taken.")) {
               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
-            } else if (err.response.data.errors[key].includes("The password field confirmation does not match.")) {
+            } else if (err.response.data.errors[key].includes("The password confirmation does not match.")) {
               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
             } else {
               errors.value[key] = err.response.data.errors[key];
@@ -64,6 +100,8 @@ const register = () => {
       });
   }
 };
+
+
 </script>
 
 <template>
@@ -71,6 +109,7 @@ const register = () => {
     <div class="form-container m-5 p-1">
       <h4 class="honk form-container2 fs-1" id="RegistrationText">REGISZTRÁCIÓ</h4>
       <div class="container">
+        <!-- <div class="container w-25"></div> -->
         <form class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
@@ -138,7 +177,7 @@ input {
   background-color: black;
   opacity: 0.8;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
-  
+
 }
 
 .form-container {
