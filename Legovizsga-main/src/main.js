@@ -10,6 +10,11 @@ import './assets/css/style.css';
 
 const app = createApp(App);
 
+const script = document.createElement('script');
+script.src = 'https://assets.calendly.com/assets/external/widget.js';
+script.async = true;
+document.head.appendChild(script);
+
 app.use(createPinia());
 app.use(router);
 
