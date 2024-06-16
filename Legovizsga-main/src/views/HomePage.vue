@@ -1,7 +1,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { ref , onMounted, computed} from 'vue';
 
 const isLoggedIn = ref(true); // Ez legyen true, ha be van jelentkezve a felhasználó
 const router = useRouter();
@@ -16,6 +16,12 @@ const logout = () => {
   window.location.replace('/'); 
   // Frissíti az oldalt, és törli az előző oldalakat a history-ból
 };
+
+
+
+
+
+
 </script>
 
 
@@ -43,6 +49,8 @@ const logout = () => {
 
     </div>
     
+
+    
     
   </div>
 </template>
@@ -50,6 +58,9 @@ const logout = () => {
 
 
 <style scoped>
+
+
+
 .homepage-container {
   display: flex;
   flex-direction: column;

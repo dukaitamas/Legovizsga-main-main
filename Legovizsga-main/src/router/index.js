@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import Registration from "../views/RegistrationView.vue";
 import Login from "../views/LoginView.vue";
 import HomePage from "../views/HomePage.vue";
+// import StartPage from "/index.html";
 
 
 const router = createRouter({
@@ -37,8 +38,8 @@ const router = createRouter({
     // {
     //   path: "/en-hu",
     //   name: "EnHu",
-    //   component: StartPage, // Or the specific component you want to render for this path
-    // },
+    //   component: StartPage,
+    //  } // Or the specific component you want to render for this path
   ],
 
 });

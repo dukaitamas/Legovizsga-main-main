@@ -31,5 +31,5 @@ If any error again comes then check which package is throwing error then change 
 that package (version shown in the console error) in package.json. Then npm install and npm start.
  Then you wile fine.
 
-
+npm audit fix
 
