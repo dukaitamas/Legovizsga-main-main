@@ -198,6 +198,23 @@ p {
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import CalendlyWidget from './CalendlyWidget.vue';
+import axios from 'axios';
+
+
+const searchQuery = ref('');
+const results = ref({
+  sets: [],
+  themes: [],
+});
+
+const search = async () => {
+  if (searchQuery.value.length > 2) {
+    const response = await axios.get('http://127.0.0.1:8000/api/search', {
+      params: { query: searchQuery.value },
+    });
+    results.value = response.data;
+  }
+};
 
 const isLoggedIn = ref(true);
 const router = useRouter();
@@ -212,13 +229,30 @@ const logout = () => {
 <template>
   <div class="container">
     <aside class="sidebar">
-      <div class="search-container">
+      <!-- <div class="search-container">
         <input type="text" placeholder="Keresés..." class="search-input my-0" />
-      </div>
+      </div> -->
+
+      <div>
+    <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input my-0" />
+    <div v-if="results.sets.length || results.themes.length">
+      <h3>Szettek:</h3>
+      <ul v-if="results.sets.length">
+        <li v-for="set in results.sets" :key="set.id">{{ set.setName }}</li>
+      </ul>
+      <h3>Témák:</h3>
+      <ul v-if="results.themes.length">
+        <li v-for="theme in results.themes" :key="theme.id">{{ theme.name }}</li>
+      </ul>
+    </div>
+  </div>
+
       <div class="logout-container">
         <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
       </div>
     </aside>
+
+
     <main class="main-content">
       <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
       <div class="content">
