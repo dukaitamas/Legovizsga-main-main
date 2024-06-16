@@ -29,11 +29,11 @@ const logout = () => {
     <div class="search-content-container">
     
       <div class="search-container">
-        <input type="text" placeholder="Keresés..." class="search-input" />
+        <input type="text" placeholder="Keresés..." class="search-input my-0" />
       </div>
      
       <div class="logout-container">
-        <button @click="logout" class="logout-button">Kijelentkezés</button>
+        <button @click="logout" class=" honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
       </div>
 
       <div class="content">
