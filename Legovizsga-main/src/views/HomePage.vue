@@ -73,7 +73,8 @@ const logout = () => {
   width: 200px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
   cursor: pointer;
 }
 
@@ -85,8 +86,9 @@ const logout = () => {
   border: none;
   background-color: #ff4d4d;
   color: white;
-  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
 }
 
 .logout-button:hover {

@@ -214,4 +214,20 @@ const logout = () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+#carouselExampleDark{
+  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+
+}
+
+.navbar{
+  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+}
+
+footer{
+  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+
+}
+
+</style>

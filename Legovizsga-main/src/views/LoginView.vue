@@ -96,6 +96,8 @@ input {
 .login-button {
   background-color: black;
   opacity: 0.8;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
 }
 
 .form-container {
