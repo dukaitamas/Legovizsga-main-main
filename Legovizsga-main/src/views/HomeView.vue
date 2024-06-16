@@ -69,8 +69,8 @@ const valaszt = () => {
 </script>
 
 <template>
-  <div class=" container text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic">
-    <select class="nabla bg-success p-2 text-dark bg-opacity-75 border-warning border border-3 rounded-2" v-model="valasztottKategoriaId" @change="valaszt">
+  <div class=" text-center fs-4 bg-primary w-100 py-2 fst-italic">
+    <select class="nabla bg-success p-2 text-dark bg-opacity-50 border-warning border border-opacity-75 border-3 rounded-2" v-model="valasztottKategoriaId" @change="valaszt">
       <option disabled value="">Kérem válasszon a témák közül!</option>
       <option v-for="kategoria in kategoriak" :key="kategoria.id" :value="kategoria.id">
         🗂️{{ kategoria.id }} 𓏠 {{ kategoria.name }} 👷

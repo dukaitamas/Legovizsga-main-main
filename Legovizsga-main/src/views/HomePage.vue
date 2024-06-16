@@ -201,19 +201,53 @@ import axios from 'axios';
 
 
 const searchQuery = ref('');
-const results = ref({
-  sets: [],
-  themes: [],
-});
 
-const search = async () => {
-  if (searchQuery.value.length > 2) {
-    const response = await axios.get('http://127.0.0.1:8000/api/search', {
-      params: { query: searchQuery.value },
+const sets = ref([]);
+const themes = ref([]);
+const setsPagination = ref({});
+const themesPagination = ref({});
+
+const search = async (page = 1) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/search`, {
+      params: { query: searchQuery.value, page: page }
     });
-    results.value = response.data;
+
+    sets.value = response.data.sets.data;
+    themes.value = response.data.themes.data;
+    setsPagination.value = response.data.sets;
+    themesPagination.value = response.data.themes;
+  } catch (error) {
+    console.error("Error during search:", error);
   }
 };
+
+const loadMoreSets = () => {
+  if (setsPagination.value.next_page_url) {
+    search(setsPagination.value.current_page + 1);
+  }
+};
+
+const loadMoreThemes = () => {
+  if (themesPagination.value.next_page_url) {
+    search(themesPagination.value.current_page + 1);
+  }
+};
+
+
+// const results = ref({
+//   sets: [],
+//   themes: [],
+// });
+
+// const search = async () => {
+//   if (searchQuery.value.length > 2) {
+//     const response = await axios.get('http://127.0.0.1:8000/api/search', {
+//       params: { query: searchQuery.value },
+//     });
+//     results.value = response.data;
+//   }
+// };
 
 const isLoggedIn = ref(true);
 const router = useRouter();
@@ -230,33 +264,46 @@ const logout = () => {
 
     <div class="top-bar">
       <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input mb-4" />
-      <div v-if="results.sets.length || results.themes.length">
+      <!-- <div v-if="results.sets.length || results.themes.length"> -->
+      <div>
         <h3>Szettek:</h3>
-        <ul v-if="results.sets.length">
+        <!-- <ul v-if="results.sets.length">
           <li v-for="set in results.sets" :key="set.id">{{ set.setName }}</li>
+        </ul> -->
+        <ul>
+          <li v-for="set in sets" :key="set.id">{{ set.setName }}</li>
         </ul>
-        <h3>Témák:</h3>
-        <ul v-if="results.themes.length">
+
+        <button v-if="setsPagination.next_page_url" @click="loadMoreSets">Továbbiak betöltése</button>
+      </div>
+    </div>
+    <h3>Témák:</h3>
+    <!-- <ul v-if="results.themes.length">
           <li v-for="theme in results.themes" :key="theme.id">{{ theme.name }}</li>
-        </ul>
-      </div>
-    </div>
+        </ul> -->
+    <ul>
+      <li v-for="theme in themes" :key="theme.id">{{ theme.name }}</li>
+    </ul>
+    <button v-if="themesPagination.next_page_url" @click="loadMoreThemes">Továbbiak betöltése</button>
+
+  </div>
+  
 
 
-    <div class="logout-container">
-      <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
-    </div>
+  <div class="logout-container">
+    <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
+  </div>
 
 
 
-    <div class="main-content">
-      <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
-      <div class="content">
-        <h1>Üdvözöljük a LEGO weboldalon!</h1>
-        <p>Itt találja a legjobb LEGO készleteket.</p>
-      </div>
+  <div class="main-content">
+    <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
+    <div class="content">
+      <h1>Üdvözöljük a LEGO weboldalon!</h1>
+      <p>Itt találja a legjobb LEGO készleteket.</p>
     </div>
   </div>
+  
 </template>
 
 <!-- <style scoped>
@@ -357,7 +404,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 80px); /* Adjust according to the height of the top bar */
+  height: calc(100vh - 80px);
+  /* Adjust according to the height of the top bar */
 }
 
 .calendly-container {
@@ -368,6 +416,4 @@ p {
   border-radius: 11px;
   background-color: white;
 }
-
 </style>
-
