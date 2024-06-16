@@ -41,7 +41,7 @@ const register = () => {
     })
     .then(response => {
       console.log('Registration successful', response.data);
-      successMessage.value = 'A regisztráció sikeres'; // Set success message
+      successMessage.value = 'A regisztráció sikeres!'; // Set success message
       // Clear form fields
       userName.value = '';
       email.value = '';
@@ -69,35 +69,41 @@ const register = () => {
   <div class="registration-page p-0 m-0" >
     <div class="form-container  m-5 p-1 bg-dark bg-opacity-75">
       <h4 class="honk form-container2 fs-1 " id="RegistrationText">REGISZTRÁCIÓ</h4></div>
-    <div class="container w-25">
+    <div class="container  w-25">
       <form class="row g-3" @submit.prevent="register">
         <div class="col-md-12">
           <label for="inputName" class="form-label fs-5 text-light fw-bold ">Felhasználó neve:</label>
           <input v-model="userName" required type="text" class="form-control " id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
         </div>
         <br>
+
         <div class="col-md-12">
           <label for="inputEmail4" class="form-label fs-5 text-light fw-bold">Email:</label>
           <input v-model="email" required type="email" class="form-control " id="inputEmail4" autocomplete="email"
             placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
         </div>
         <br>
+
         <div class="col-md-12">
           <label for="inputPassword4" class="form-label fs-5 text-light fw-bold">Jelszó:</label>
           <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4" autocomplete="current-password"
             placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
         </div>
+        <br>
+
         <div class="col-md-12">
           <label for="inputPasswordConfirmation" class="form-label fs-5 text-light fw-bold">Jelszó megerősítése:</label>
           <input v-model="password_confirmation" required type="password" class="form-control" id="inputPasswordConfirmation" autocomplete="current-password"
             placeholder="Kérem erősítse meg a jelszót!">
         </div>
+        <br>
+
         <div class="col-12 p-3">
           <button :disabled="buttonDisabled" type="submit" class=" honk registration-button fs-5 btn btn-dark">Regisztráció</button>
         </div>
       </form>
-      <div class="success" v-if="successMessage">{{ successMessage }}</div>
-      <div class="error">{{ error }}</div>
+      <div class="success  " v-if="successMessage">{{ successMessage }}</div>
+      <div class="error  " >{{ error }}</div>
       <div v-if="Object.keys(errors).length" class="errors">
         <ul>
           <li v-for="(err, key) in errors" :key="key">{{ err[0] }}</li>
@@ -120,9 +126,10 @@ const register = () => {
   /* background-image: url(@/assets/images/css/legologo.jpg); */
  margin: -14px; 
  /* margin -14px-eé tűnik el a regisztráció mögötti box és nem látszik a z-indexes háttérképen */
-
+  display: block;
 }
  
+
 input {
   border-radius: 11cap ;
   color: white;
@@ -144,11 +151,13 @@ input {
 .form-container {
   /* background-color: black; */
   opacity: 94%;
+  /* display: block; */
 }
 
 .form-control{
   background-color: gray;
   opacity: 0.9;
+  /* display: block; */
 }
 .registration-page {
   display: flex;
@@ -178,13 +187,29 @@ végére */
   max-width: 500px;
 }
 .success {
-  color: green;
+  color: rgb(45, 216, 45);
+  height: 150px;
+  text-size-adjust: 100%;
+  font-size: 125px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
 }
 .error {
-  color: red;
+  color: rgb(233, 220, 220);
+  text-size-adjust: 100%; 
+  font-size: 45rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
+
+
 }
 .errors {
   color: red;
+  /* color: rgb(233, 220, 220); */
+  text-size-adjust: 100%; 
+  font-size: 20px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 900%;
 }
 
 .success,
