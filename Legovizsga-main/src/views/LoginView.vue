@@ -142,7 +142,7 @@ input {
 }
 
 .error {
-  color: rgb(233, 220, 220);
+  color: rgb(247, 4, 4);
   text-size-adjust: 100%;
   font-size: 45rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
