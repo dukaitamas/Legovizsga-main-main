@@ -135,7 +135,11 @@ const logout = () => {
       </button>
     </div>
 
+        <div class="legogif">
+          <img class="legofigure" src="../src/assets/css/images/lego-kick.gif " alt="">
+          <img class="legofigure" id="runningLego" src="../src/assets/css/images/runningLego.gif " alt="">
 
+        </div>
 
 
     <footer
@@ -208,6 +212,7 @@ const logout = () => {
             </svg>Facebook</a></li>
       </ul>
     </footer>
+
   </div>
   <div v-else>
     <router-view />
@@ -215,6 +220,42 @@ const logout = () => {
 </template>
 
 <style scoped>
+
+.legofigure{
+position: absolute;
+top: 82vh;
+left: 0px;
+/* left:-60px;
+hogy a képernyőn kívül jelenjen meg a legogif */
+animation-name: drive;
+  animation-duration: 7s;
+
+}
+
+#runningLego {
+  position: absolute;
+  top: 97vh;
+  left: 0px;
+  /* left:-60px;
+  hogy a képernyőn kívül jelenjen meg a legogif */
+  animation-name: drive;
+  animation-duration: 7s;
+}
+
+@keyframes drive {
+  0% {
+    left: 0px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+
+
+
+
 
 #carouselExampleDark{
   box-shadow: 3px 3px 9px 4px  rgba(217, 215, 221, 0.9);
