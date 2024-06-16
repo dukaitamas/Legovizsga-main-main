@@ -46,7 +46,7 @@ const login = () => {
 <template>
   <div class="login-page" p-2>
     <div class="form-container">
-      <h4 class="honk fs-1 bg-light bg-opacity-10 p-0 m-0 " id="LoginText">BEJELENTKEZÉS</h4>
+      <h4 class="honk fs-1  p-0 m-0 " id="LoginText">BEJELENTKEZÉS</h4>
 
     <div class="container w-25">
       <form class="row g-3" @submit.prevent="login">
@@ -81,23 +81,29 @@ const login = () => {
 #LoginText {
   text-align: center;
   margin-bottom: 20px;
+  /* background-color: transparent;  */
+  /* font-family:Arial, Helvetica, sans-serif;
+  font-weight: 500; */
+
 }
+
 
 input {
   border-radius: 11px;
   color: white;
   background-color: antiquewhite, 0.1;
-  border: 0.1px solid rgba(191, 202, 202, 0.5);
+  border: 0.1px solid rgba(142, 212, 212, 0.5);
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
   border-width: 4px 1.25em;
   border-style: solid;
 }
 
 .login-button {
+  border-radius: 11px;
   background-color: black;
   opacity: 0.8;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
-  border-radius: 10px;
+  
 }
 
 .form-container {
