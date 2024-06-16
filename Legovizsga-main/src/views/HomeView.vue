@@ -69,7 +69,7 @@ const valaszt = () => {
 </script>
 
 <template>
-  <div class="text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic">
+  <div class=" container text-center mx-auto fs-4 bg-primary w-100 py-2 fst-italic">
     <select class="nabla bg-success p-2 text-dark bg-opacity-75 border-warning border border-3 rounded-2" v-model="valasztottKategoriaId" @change="valaszt">
       <option disabled value="">Kérem válasszon a témák közül!</option>
       <option v-for="kategoria in kategoriak" :key="kategoria.id" :value="kategoria.id">
@@ -104,6 +104,14 @@ const valaszt = () => {
     <p v-else>No more pages</p> -->
   </div>
 </template>
+
+<style scoped>
+/* .container{
+  box-shadow: 3px 3px 9px rgba(247, 245, 245, 0.9);
+} */
+
+
+</style>
 
 
 

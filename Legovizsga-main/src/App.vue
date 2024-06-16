@@ -217,17 +217,21 @@ const logout = () => {
 <style scoped>
 
 #carouselExampleDark{
-  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+  box-shadow: 3px 3px 9px 4px  rgba(217, 215, 221, 0.9);
 
 }
 
 .navbar{
-  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+  box-shadow: 0.2px 2px 6px 2px rgba(217, 215, 221, 0.9);
 }
 
 footer{
-  box-shadow: 3px 3px 9px 4px rgba(0.9, 0.9, 0.9, 0.9);
+  box-shadow: 3px 3px 9px 4px rgba(167, 100, 95, 0.9);
 
+}
+
+h5{
+  color: rgb(247, 4, 4);
 }
 
 </style>
