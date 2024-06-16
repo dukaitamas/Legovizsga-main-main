@@ -66,19 +66,19 @@ const register = () => {
 </script>
 
 <template>
-  <div class="registration-page" p-2>
-    <div class="form-container  p-3">
-      <h4 class="honk form-container fs-1 ">REGISZTRÁCIÓ</h4></div>
+  <div class="registration-page p-0 m-0" >
+    <div class="form-container  m-5 p-1 bg-dark bg-opacity-75">
+      <h4 class="honk form-container2 fs-1 " id="RegistrationText">REGISZTRÁCIÓ</h4></div>
     <div class="container w-25">
       <form class="row g-3" @submit.prevent="register">
         <div class="col-md-12">
-          <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
-          <input v-model="userName" required type="text" class="form-control" id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
+          <label for="inputName" class="form-label fs-5 text-light fw-bold ">Felhasználó neve:</label>
+          <input v-model="userName" required type="text" class="form-control " id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
         </div>
         <br>
         <div class="col-md-12">
           <label for="inputEmail4" class="form-label fs-5 text-light fw-bold">Email:</label>
-          <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email"
+          <input v-model="email" required type="email" class="form-control " id="inputEmail4" autocomplete="email"
             placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
         </div>
         <br>
@@ -93,7 +93,7 @@ const register = () => {
             placeholder="Kérem erősítse meg a jelszót!">
         </div>
         <div class="col-12 p-3">
-          <button :disabled="buttonDisabled" type="submit" class=" honk fs-5 btn btn-dark">Regisztráció</button>
+          <button :disabled="buttonDisabled" type="submit" class=" honk registration-button fs-5 btn btn-dark">Regisztráció</button>
         </div>
       </form>
       <div class="success" v-if="successMessage">{{ successMessage }}</div>
@@ -110,6 +110,46 @@ const register = () => {
 <style scoped>
 /* Add any necessary styling here */
 
+
+#RegistrationText{
+  /* border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(@/assets/images/css/legologo.jpg;) 30 round !important;
+  z-index:0;
+  background-color: beige; */
+  /* background-image: url(@/assets/images/css/legologo.jpg); */
+ margin: -14px; 
+ /* margin -14px-eé tűnik el a regisztráció mögötti box és nem látszik a z-indexes háttérképen */
+
+}
+ 
+input {
+  border-radius: 11cap ;
+  color: white;
+  /* bottom: 0; */
+  background-color: antiquewhite ,0.1;
+  border: 0.1cap solid rgba(191, 202, 202, 0.5);
+  /* a 0.5 a végén a border opacityt jelenti */
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-width: 4px 1.25em;
+  border-style: solid;
+  
+}
+
+.registration-button{
+  background-color: black;
+  opacity: 0.8;
+
+}
+.form-container {
+  /* background-color: black; */
+  opacity: 94%;
+}
+
+.form-control{
+  background-color: gray;
+  opacity: 0.9;
+}
 .registration-page {
   display: flex;
   justify-content: center;
@@ -125,6 +165,7 @@ végére */
   background-position: center;
   position: relative;
   z-index: 1;
+  opacity: 0.87;
 }
 
 .form-container {
