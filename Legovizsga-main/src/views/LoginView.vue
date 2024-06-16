@@ -46,7 +46,8 @@ const login = () => {
 <template>
   <div class="login-page" p-2>
     <div class="form-container">
-      <h4 class="honk fs-1 bg-light bg-opacity-10 p-0 m-0">BEJELENTKEZÉS</h4></div>
+      <h4 class="honk fs-1 bg-light bg-opacity-10 p-0 m-0 " id="LoginText">BEJELENTKEZÉS</h4>
+
     <div class="container w-25">
       <form class="row g-3" @submit.prevent="login">
         <div class="col-md-12">
@@ -61,18 +62,53 @@ const login = () => {
             placeholder="Kérem írja be a jelszavát!">
         </div>
         <div class="col-12 p-3">
-          <button type="submit" class="honk fs-5 btn btn-dark">Bejelentkezés</button>
+          <button type="submit" class="honk  login-button fs-5 btn btn-dark">Bejelentkezés</button>
         </div>
       </form>
       <div class="success" v-if="successMessage">{{ successMessage }}</div>
       <div class="error" v-if="error">{{ error }}</div>
     </div>
   </div>
+  </div>
 </template>
 
 <style scoped>
 /* csak erre az oldalra vonatkozik az itt megadott stlye ha scopedre van állítva */
 /* Add any necessary styling here */
+
+
+
+#LoginText {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  border-radius: 11px;
+  color: white;
+  background-color: antiquewhite, 0.1;
+  border: 0.1px solid rgba(191, 202, 202, 0.5);
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  border-width: 4px 1.25em;
+  border-style: solid;
+}
+
+.login-button {
+  background-color: black;
+  opacity: 0.8;
+}
+
+.form-container {
+  background-color: transparent; 
+  /* Átlátszó háttérszín */
+  opacity: 94%;
+  width: 100vw;
+}
+
+.form-control {
+  background-color: gray;
+  opacity: 0.9;
+}
 
 .login-page {
   display: flex;
@@ -87,18 +123,30 @@ const login = () => {
   z-index: 1;
 }
 
-.form-container {
-  background-color: rgba(255, 255, 255, 0.8); /* Fehér háttér, hogy kiemelje a formot */
-  padding: 20px;
+/* .form-container {
+  background-color: rgba(255, 255, 255, 0.8);  */
+  /* Fehér háttér, hogy kiemelje a formot */
+  /* padding: 20px;
   border-radius: 10px;
   z-index: 2;
   position: relative;
-}
+} */
+
 .success {
-  color: green;
+  color: rgb(45, 216, 45);
+  height: 150px;
+  text-size-adjust: 100%;
+  font-size: 125px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
 }
+
 .error {
-  color: red;
+  color: rgb(233, 220, 220);
+  text-size-adjust: 100%;
+  font-size: 45rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
 }
 
 .success,
