@@ -34,11 +34,11 @@ const router = createRouter({
     },// Új oldal útvonala a login gombra kattintva
 
 
-    // {
-    //   path: "/en-hu",
-    //   name: "EnHu",
-    //   component: StartPage, // Or the specific component you want to render for this path
-    // },
+    {
+      path: "/en-hu",
+      name: "EnHu",
+      component: StartPage, // Or the specific component you want to render for this path
+    },
   ],
 
 });

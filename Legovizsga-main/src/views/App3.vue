@@ -1,8 +1,7 @@
 <script setup>
 
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed , onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-// import { ref, onMounted } from 'vue';
 
 const route = useRoute();
 const isLoggedIn = ref(false);
@@ -11,129 +10,65 @@ const isLoginOrRegisterPage = computed(() => {
   return route.path === '/login' || route.path === '/registration';
 });
 
+const router = useRouter();
+
 const logout = () => {
   isLoggedIn.value = false;
   //  kijelentkezési logika 
   // router.push('/login');
-  // URL history reset
-  route.replace('/login');
-  window.location.replace('/');
+   // URL history reset
+   router.replace('/login');
+  window.location.replace('/'); 
   // Frissíti az oldalt, és törli az előző oldalakat a history-ból
 };
 
+document.addEventListener('keydown', (event) => {
+  const legoKick = document.getElementById('legoKick');
+  const runningLego = document.getElementById('runningLego');
 
-
-
-
-const legoKick = ref(null);
-const runningLego = ref(null);
-
-const moveUp = (element) => {
-  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-  element.style.top = `${top - 100}px`;
-};
-
-const moveDown = (element) => {
-  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-  element.style.top = `${top + 100}px`;
-};
-
-const moveLeft = (element) => {
-  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-  element.style.left = `${left - 100}px`;
-};
-
-const moveRight = (element) => {
-  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-  element.style.left = `${left + 100}px`;
-};
-
-const pauseAnimation = (element) => {
-  element.style.animationPlayState = 'paused';
-};
-
-const handleKeydown = (event) => {
-  console.log(event.key); // Log the key value to the console
-  if (legoKick.value && runningLego.value) {
-    switch (event.key) {
-      case 'ArrowUp':
-        pauseAnimation(legoKick.value);
-        pauseAnimation(runningLego.value);
-        moveUp(legoKick.value);
-        moveUp(runningLego.value);
-        break;
-      case 'ArrowDown':
-        pauseAnimation(legoKick.value);
-        pauseAnimation(runningLego.value);
-        moveDown(legoKick.value);
-        moveDown(runningLego.value);
-        break;
-      case 'ArrowLeft':
-        pauseAnimation(legoKick.value);
-        pauseAnimation(runningLego.value);
-        moveLeft(legoKick.value);
-        moveLeft(runningLego.value);
-        break;
-      case 'ArrowRight':
-        pauseAnimation(legoKick.value);
-        pauseAnimation(runningLego.value);
-        moveRight(legoKick.value);
-        moveRight(runningLego.value);
-        break;
-    }
+  switch (event.key) {
+    case 'ArrowUp':
+      moveUp(legoKick);
+      moveUp(runningLego);
+      break;
+    case 'ArrowDown':
+      moveDown(legoKick);
+      moveDown(runningLego);
+      break;
+    case 'ArrowLeft':
+      moveLeft(legoKick);
+      moveLeft(runningLego);
+      break;
+    case 'ArrowRight':
+      moveRight(legoKick);
+      moveRight(runningLego);
+      break;
   }
-};
+});
+
+function moveUp(element) {
+  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
+  element.style.top = `${top - 10}px`;
+}
+
+function moveDown(element) {
+  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
+  element.style.top = `${top + 10}px`;
+}
+
+function moveLeft(element) {
+  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
+  element.style.left = `${left - 10}px`;
+}
+
+function moveRight(element) {
+  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
+  element.style.left = `${left + 10}px`;
+}
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown);
 });
-
-
-
-// document.addEventListener('keydown', (event) => {
-//   const legoKick = document.getElementById('legoKick');
-//   const runningLego = document.getElementById('runningLego');
-
-//   switch (event.key) {
-//     case 'ArrowUp':
-//       moveUp(legoKick);
-//       moveUp(runningLego);
-//       break;
-//     case 'ArrowDown':
-//       moveDown(legoKick);
-//       moveDown(runningLego);
-//       break;
-//     case 'ArrowLeft':
-//       moveLeft(legoKick);
-//       moveLeft(runningLego);
-//       break;
-//     case 'ArrowRight':
-//       moveRight(legoKick);
-//       moveRight(runningLego);
-//       break;
-//   }
-// });
-
-// function moveUp(element) {
-//   const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-//   element.style.top = `${top - 10}px`;
-// }
-
-// function moveDown(element) {
-//   const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-//   element.style.top = `${top + 10}px`;
-// }
-
-// function moveLeft(element) {
-//   const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-//   element.style.left = `${left - 10}px`;
-// }
-
-// function moveRight(element) {
-//   const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-//   element.style.left = `${left + 10}px`;
-// }
-
 
 
 
@@ -257,11 +192,11 @@ onMounted(() => {
       </button>
     </div>
 
-    <div class="legogif">
-      <img class="legofigure" src="../src/assets/css/images/lego-kick.gif " alt="">
-      <img class="legofigure" id="runningLego" src="../src/assets/css/images/runningLego2.gif " alt="">
+        <div class="legogif">
+          <img class="legofigure" src="../src/assets/css/images/lego-kick.gif " alt="">
+          <img class="legofigure" id="runningLego" src="../src/assets/css/images/runningLego2.gif " alt="">
 
-    </div>
+        </div>
 
 
     <footer
@@ -285,7 +220,7 @@ onMounted(() => {
             </svg>X-Twitter</a></li>
 
 
-        <li class="ms-3"><a class=" links text-body-secondary" href="https://www.instagram.com/lego/" target="_blank">
+            <li class="ms-3"><a class=" links text-body-secondary" href="https://www.instagram.com/lego/" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram"
               viewBox="0 0 16 16">
               <path
@@ -324,7 +259,7 @@ onMounted(() => {
                 d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.14-7-7 3.14-7 7-7z" />
             </svg>Facebook</a></li> -->
 
-        <li class="ms-3"><a class="links text-body-secondary" href="https://www.facebook.com/LEGO/" target="_blank">
+            <li class="ms-3"><a class="links text-body-secondary" href="https://www.facebook.com/LEGO/" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook"
               viewBox="0 0 16 16">
               <path
@@ -341,16 +276,15 @@ onMounted(() => {
   </div>
 </template>
 
-
-
 <style scoped>
-.legofigure {
-  position: absolute;
-  top: 82vh;
-  left: -60px;
-  /* left:-60px;
+
+.legofigure{
+position: absolute;
+top: 82vh;
+left: -60px;
+/* left:-60px;
 hogy a képernyőn kívül jelenjen meg a legogif */
-  animation-name: drive;
+animation-name: drive;
   animation-duration: 7s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: infinite; */
@@ -367,7 +301,7 @@ hogy a képernyőn kívül jelenjen meg a legogif */
   animation-name: drive;
   animation-duration: 9s;
   /* animation-delay: 0.8s; */
-  animation-timing-function: cubic-bezier(.61, .77, .1, .91);
+  animation-timing-function: cubic-bezier(.61,.77,.1,.91);
 }
 
 @keyframes drive {
@@ -385,21 +319,22 @@ hogy a képernyőn kívül jelenjen meg a legogif */
 
 
 
-#carouselExampleDark {
-  box-shadow: 3px 3px 9px 4px rgba(217, 215, 221, 0.9);
+#carouselExampleDark{
+  box-shadow: 3px 3px 9px 4px  rgba(217, 215, 221, 0.9);
 
 }
 
-.navbar {
+.navbar{
   box-shadow: 0.2px 2px 6px 2px rgba(217, 215, 221, 0.9);
 }
 
-footer {
+footer{
   box-shadow: 3px 3px 9px 4px rgba(167, 100, 95, 0.9);
 
 }
 
-h5 {
+h5{
   color: rgb(247, 4, 4);
 }
+
 </style>
