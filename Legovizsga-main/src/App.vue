@@ -426,7 +426,7 @@ h5 {
   font-family: "Sacramento", cursive;
   text-align: center;
   animation: blink 12s infinite;
-  -webkit-animation: blink 12s infinite;
+  /* -webkit-animation: blink 12s infinite; */
 }
 
 
@@ -445,7 +445,7 @@ h5 {
   font-family: "Sacramento", cursive;
   text-align: center;
   animation: blink 12s infinite;
-  -webkit-animation: blink 12s infinite;
+  /* -webkit-animation: blink 12s infinite; */
 
   /* -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
@@ -462,7 +462,7 @@ h5 {
 } */
 
 
-@-webkit-keyframes blink {
+/* @-webkit-keyframes blink {
   20%,
   24%,
   55% {
@@ -484,7 +484,7 @@ h5 {
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
     color: #fff6a9;
   }
-}
+} */
 
 @keyframes blink {
   20%,
