@@ -111,6 +111,20 @@ const valaszt = () => {
 } */
 
 
+.nabla {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
+
+    /* legördülő lista betűstílusa állítható élőben 
+    a CSS full axis variable-vel EDPT EHLT
+    -tól -ig értékei az index.html headerben találhatóak */
+}
+
 </style>
 
 

@@ -162,6 +162,18 @@ const register = () => {
   margin-bottom: 20px;
 }
 
+.honk {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 13,
+    "SHLN" 22;
+    /* élőben variálható a font-morph és a font shadow 
+    a MORF és SHLN értékekkel */
+    /* a 0-tól ...-ig értékek az index.html headerben vannak a linkek */
+}
 input {
   border-radius: 11px;
   color: white;
