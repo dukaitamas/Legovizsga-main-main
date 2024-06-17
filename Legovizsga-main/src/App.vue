@@ -402,6 +402,131 @@ footer {
 }
 
 h5 {
+  font-size: 1.5rem;
   color: rgb(247, 4, 4);
+  /* -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate; */
+  text-shadow: 0 0 5px
+  #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 
+  0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  font-family: "Sacramento", cursive;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
 }
+
+
+
+
+
+
+
+.carousel-text{
+  font-size: 1.3rem;
+  color: rgb(247, 4, 4);
+  text-shadow: 0 0 5px
+  #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 
+  0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  font-family: "Sacramento", cursive;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
+
+  /* -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate; */
+}
+
+/* @-webkit-keyframes carousel-text {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+} */
+
+
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+
+
+
+/* weblinks to glow effects also can lnik mine: 
+starting with mine: https://codepen.io/tamas-dukai/pen/KKdOjPa
+
+https://www.w3schools.com/howto/howto_css_glowing_text.asp
+
+https://freefrontend.com/css-glow-text-effects/
+https://codepen.io/fossheim/pen/PoqKoLY
+https://codepen.io/CITguy/pen/yLaZZbO
+https://codepen.io/sathyaram/pen/xxgLoew
+https://codepen.io/ananyaneogi/pen/Bgozrz
+https://codepen.io/ananyaneogi/pen/Bgozrz
+https://codepen.io/comehope/pen/GBwvxw
+https://codepen.io/GeorgePark/pen/MrjbEr
+https://codepen.io/markheggan/pen/LjrVYN
+https://codepen.io/AllThingsSmitty/pen/VzXrgY
+https://codepen.io/ganceab/pen/YZvKLQ
+https://codepen.io/chrissimmons/pen/WprrQe
+https://codepen.io/bennettfeely/pen/BzGVZr
+https://codepen.io/Trinca/pen/NrvpWa
+https://codepen.io/erikjung/pen/XdWEKE
+https://codepen.io/technomancy/pen/QbrozK
+https://codepen.io/makan/pen/yyjRZx
+https://codepen.io/nodws/pen/WNjXbr
+https://codepen.io/primaapriansyah/pen/ExxGyj */
+
+
+
+
 </style>
