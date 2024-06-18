@@ -166,34 +166,34 @@ input {
 justify-content:end;
 /* right: 70%; */
 /* float: left; */
-margin-right: 20%;
-margin-left: 20%;
+margin-right: 25%;
+margin-left: 25%;
 /* margin-top: -10%; */
 margin-bottom: 10%;
 /* left: calc(50% - 225px); */
-transform: rotateX(0) rotateY(-25deg);
 
- 
+opacity: 0.9;
+transition: opacity .3s ease;
 
 transform-origin: center;
     /* -webkit-animation: bounce 3s 
     cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
-    animation: bounce 9s
-    cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite;
+    animation: bounce 6s
+    cubic-bezier(.22,0.2,.22,1.01) infinite;
 
 }
 
 @keyframes bounce {
     0%,20%,50%,80%,to {
-        transform: translateZ(-2px) translateY(5px)
+        transform: translateZ(-21px) translateY(8px)
     }
 
     40% {
-        transform: rotateY(180deg) translateZ(-2px) translateY(-35px)
+        transform: rotateY(190deg) translateZ(-4px) translateY(-32px)
     }
 
     60% {
-        transform: translateZ(-2px) translateY(-25px)
+        transform: translateZ(-12px) translateY(-25px)
     }
 }
 
