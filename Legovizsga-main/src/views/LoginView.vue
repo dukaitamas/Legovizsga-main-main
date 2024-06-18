@@ -45,7 +45,12 @@ const login = () => {
 
 <template>
   <div class="login-page" p-2>
+
+
     <div class="form-container">
+
+<div class="StarWarsLogo"><img src="../assets/css/images/StarwarslogoRemovedbackground66.png" alt=""></div>
+
       <h4 class="honk fs-1  p-0 m-0 " id="LoginText">BEJELENTKEZÉS</h4>
 
     <div class="container w-25">
@@ -138,6 +143,7 @@ input {
   min-height: 100vh;
   background-image: url('@/assets\css\images\space satellite.png');
   /* C:\Users\tomi2\Legovizsga-main-main\Legovizsga-main\src\assets\css\images\space satellite.png */
+  /* !!background image!! */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -152,6 +158,46 @@ input {
   z-index: 2;
   position: relative;
 } */
+
+.StarWarsLogo{
+  display: flex;
+  z-index: 11;
+  /* opacity: 0.9; */
+justify-content:end;
+/* right: 70%; */
+/* float: left; */
+margin-right: 20%;
+margin-left: 20%;
+/* margin-top: -10%; */
+margin-bottom: 10%;
+/* left: calc(50% - 225px); */
+transform: rotateX(0) rotateY(-25deg);
+
+ 
+
+transform-origin: center;
+    /* -webkit-animation: bounce 3s 
+    cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
+    animation: bounce 9s
+    cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite;
+
+}
+
+@keyframes bounce {
+    0%,20%,50%,80%,to {
+        transform: translateZ(-2px) translateY(5px)
+    }
+
+    40% {
+        transform: rotateY(180deg) translateZ(-2px) translateY(-35px)
+    }
+
+    60% {
+        transform: translateZ(-2px) translateY(-25px)
+    }
+}
+
+
 
 .success {
   color: rgb(45, 216, 45);
