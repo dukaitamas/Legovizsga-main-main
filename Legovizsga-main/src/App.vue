@@ -425,7 +425,9 @@ h5 {
     color: #fff6a9;
   font-family: "Sacramento", cursive;
   text-align: center;
-  animation: blink 12s infinite;
+  /* animation: blink 12s infinite; */
+
+  /* !!animation kikommentleve mert ez az animation belaggolta a legofigurák animationjét!! */
   /* -webkit-animation: blink 12s infinite; */
 }
 
@@ -444,7 +446,10 @@ h5 {
     color: #fff6a9;
   font-family: "Sacramento", cursive;
   text-align: center;
-  animation: blink 12s infinite;
+  /* animation: blink 12s infinite; */
+
+    /* !!animation kikommentleve mert ez az animation belaggolta a legofigurák animationjét!! */
+
   /* -webkit-animation: blink 12s infinite; */
 
   /* -webkit-animation: glow 1s ease-in-out infinite alternate;
