@@ -75,16 +75,16 @@ const logout = () => {
 
       <div class="right-container">
         <div class="search-container">
-          <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input mb-4" />
+          <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="nabla search-input fs-4 px-2 py-1 mb-2 bg-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2" />
           <h3 class="honk fs-2">Témák:</h3>
           <ul>
-            <li v-for="theme in themes" :key="theme.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2 text-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ theme.name }}</li>
+            <li v-for="theme in themes" :key="theme.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ theme.name }}</li>
           </ul>
           <button v-if="themesPagination.next_page_url" @click="loadMoreThemes" class="honk fs-3 my-0 py-1 paginationloadmorebutton mb-3" >Továbbiak betöltése</button>
 
           <h3 class="honk fs-2">Szettek:</h3>
           <ul>
-            <li v-for="set in sets" :key="set.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2 text-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ set.setName }}</li>
+            <li v-for="set in sets" :key="set.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ set.setName }}</li>
           </ul>
           <button v-if="setsPagination.next_page_url" @click="loadMoreSets" class="honk fs-3 my-0 py-1 paginationloadmorebutton">Továbbiak betöltése</button>
         </div>
@@ -190,6 +190,10 @@ const logout = () => {
 }
 
 .search-input {
+  padding-bottom: 200px;
+  /* font-family: "Nabla", system-ui; */
+  color: yellow;
+  font-size: 1rem;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
