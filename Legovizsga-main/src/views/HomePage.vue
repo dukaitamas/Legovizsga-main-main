@@ -51,6 +51,8 @@ const logout = () => {
 <template>
   <div class=" ">
     <div class="top-bar">
+      <button @click="logout" class="honk blog-button fs-3 my-0 py-1 me-5">Tovább a blogra</button>
+
       <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
     </div>
 
@@ -58,6 +60,8 @@ const logout = () => {
       <div class="left-container">
         <div class="calendly-container">
           <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
+          <!-- <CalendlyWidget url="https://calendly.com" /> -->
+
         </div>
       </div>
       
@@ -156,6 +160,23 @@ const logout = () => {
 
 .logout-button:hover {
   background-color: #da1818;
+}
+
+.blog-button{
+  padding: 10px 20px;
+  border: none;
+  background-color: rgba(128, 13, 236, 0.84);
+  /* rgb(255, 77, 77, 0.84); 0.84 az opacity érték */
+  color: white;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.8);
+  border-radius: 11px;
+}
+
+
+.blog-button:hover {
+  background-color: #2e1fb9;
 }
 
 .main-content {
