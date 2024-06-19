@@ -146,6 +146,7 @@ input {
 .registration-button{
   background-color: black;
   opacity: 0.8;
+  border: 4px solid #ccc;
 
 }
 .form-container {

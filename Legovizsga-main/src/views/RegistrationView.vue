@@ -200,6 +200,7 @@ input {
 }
 
 .registration-button {
+  border: 2px solid rgb(43, 34, 34, 0.6);
   border-radius: 11px;
   background-color: black;
   opacity: 0.8;
