@@ -148,6 +148,7 @@ const logout = () => {
   background-color: rgb(255, 77, 77, 0.84);
   /* rgb(255, 77, 77, 0.84); 0.84 az opacity érték */
   color: white;
+  border: 2px solid #ccc;
   cursor: pointer;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.8);
   border-radius: 11px;
@@ -204,14 +205,14 @@ const logout = () => {
 .paginationloadmorebutton{
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 11px;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
-  background-color: rgb(5, 255, 224, 0.3 );
+  background-color: rgba(38, 145, 132, 0.7);
 }
 
 .paginationloadmorebutton:hover {
-  background-color: rgb(171, 255, 46 , 0.5);
+  background-color: rgba(98, 145, 28, 0.5);
 }
 
 .calendly-container {
