@@ -68,9 +68,17 @@ const register = () => {
 
 <template>
   <div class="registration-page p-0 m-0">
+    <div class="downarrow">↓</div>
+
     <div class="form-container m-5 p-1">
-      <h4 class="honk form-container2 fs-1" id="RegistrationText">REGISZTRÁCIÓ</h4>
-      <div class="container">
+      <!-- <div class="downarrow mb-5">↓</div> -->
+
+      <h4 class="honk form-container2 fs-1 mb-5" id="RegistrationText">REGISZTRÁCIÓ</h4>
+      <!-- <div class="downarrow">↓</div> -->
+
+      <div class="container my-5">
+              <!-- <div class="downarrow">↓</div> -->
+
         <form class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
@@ -117,6 +125,64 @@ const register = () => {
 
 <style scoped>
 /* Add any necessary styling here */
+
+.downarrow {
+  color: hsl(0, 20%, 95%);
+  /* color: hwb(0 94% 4%);
+  color: rgb(245, 240, 240);
+  color: #f5f0f0;
+  mindegyik ugyanazt jelenti, csak másképp van megadva
+  click a színválasztóra */
+  
+ text-align: center;
+    width: 450px;
+    position: absolute;
+    bottom: 41rem;
+    left: calc(50% - 225px);
+    margin: 0 auto;
+    font-size: 8rem;
+    opacity: 1;
+    transition: opacity .3s ease;
+  font-family: 'Bebas Neue', cursive, sans-serif  ;
+    pointer-events: none;
+    z-index: -1;
+    transform-origin: center;
+    /* -webkit-animation: bounce 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
+    animation: jump 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite;
+}
+
+@keyframes jump{
+    0%,20%,50%,80%,to {
+        transform: translateZ(-2px) translateY(5px)
+    }
+
+    40% {
+        transform: rotateY(180deg) translateZ(-2px) translateY(-35px)
+    }
+
+    60% {
+        transform: translateZ(-2px) translateY(-25px)
+    }
+
+    from {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.92),
+    0 0 30px rgba(202,228,225,0.34),
+    0 0 12px rgba(30,132,242,0.52),
+    0 0 21px rgba(30,132,242,0.92),
+    0 0 34px rgba(30,132,242,0.78),
+    0 0 54px rgba(30,132,242,0.92);
+  }
+  to {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+  }
+};
 
 #RegistrationText {
   text-align: center;

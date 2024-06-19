@@ -120,16 +120,20 @@ const logout = () => {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
-  background-color: yellow;
+  /* background-color: yellow; */
+  /* background-color: #1a1a1a; */
+ /* background: radial-gradient(circle at center,#1a1546,#040411 40%); */
+  background-image: url('@/assets/css/images/legobackgroundresized.png');
 }
 
 .logout-button {
   padding: 10px 20px;
   border: none;
-  background-color: #ff4d4d;
+  background-color: rgb(255, 77, 77, 0.84);
+  /* rgb(255, 77, 77, 0.84); 0.84 az opacity érték */
   color: white;
   cursor: pointer;
-  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.8);
   border-radius: 11px;
 }
 
