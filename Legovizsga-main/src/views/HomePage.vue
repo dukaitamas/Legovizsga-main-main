@@ -76,17 +76,17 @@ const logout = () => {
       <div class="right-container">
         <div class="search-container">
           <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="search-input mb-4" />
-          <h3 class="honk">Témák:</h3>
+          <h3 class="honk fs-2">Témák:</h3>
           <ul>
-            <li v-for="theme in themes" :key="theme.id">{{ theme.name }}</li>
+            <li v-for="theme in themes" :key="theme.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2 text-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ theme.name }}</li>
           </ul>
-          <button v-if="themesPagination.next_page_url" @click="loadMoreThemes">Továbbiak betöltése</button>
+          <button v-if="themesPagination.next_page_url" @click="loadMoreThemes" class="honk fs-3 my-0 py-1 paginationloadmorebutton mb-3" >Továbbiak betöltése</button>
 
-          <h3 class="honk">Szettek:</h3>
+          <h3 class="honk fs-2">Szettek:</h3>
           <ul>
-            <li v-for="set in sets" :key="set.id">{{ set.setName }}</li>
+            <li v-for="set in sets" :key="set.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2 text-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ set.setName }}</li>
           </ul>
-          <button v-if="setsPagination.next_page_url" @click="loadMoreSets">Továbbiak betöltése</button>
+          <button v-if="setsPagination.next_page_url" @click="loadMoreSets" class="honk fs-3 my-0 py-1 paginationloadmorebutton">Továbbiak betöltése</button>
         </div>
       </div>
     </div>
@@ -95,7 +95,21 @@ const logout = () => {
 
 <style scoped>
 
+.nabla {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 60,
+    "EHLT" 20;
+    /* "EDPT" 100,
+    "EHLT" 12; */
 
+    /* legördülő lista betűstílusa állítható élőben 
+    a CSS full axis variable-vel EDPT EHLT
+    -tól -ig értékei az index.html headerben találhatóak */
+}
 .honk {
   font-family: "Honk", system-ui;
   font-optical-sizing: auto;
@@ -104,6 +118,8 @@ const logout = () => {
   font-variation-settings:
     "MORF" 13,
     "SHLN" 22;
+    /* "MORF" 13,
+    "SHLN" 22; */
     /* élőben variálható a font-morph és a font shadow 
     a MORF és SHLN értékekkel */
     /* a 0-tól ...-ig értékek az index.html headerben vannak a linkek */
@@ -179,6 +195,19 @@ const logout = () => {
   border: 1px solid #ccc;
   border-radius: 11px;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+}
+
+.paginationloadmorebutton{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 11px;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
+  background-color: rgb(5, 255, 224, 0.3 );
+}
+
+.paginationloadmorebutton:hover {
+  background-color: rgb(171, 255, 46 , 0.5);
 }
 
 .calendly-container {
