@@ -245,6 +245,9 @@ background: linear-gradient(white, #38495a);
 // Fallback for browsers that don't support background-clip: text
 color: #38495a;
 }
+
+
+
 // h1 {
 //   // position: absolute;
 
