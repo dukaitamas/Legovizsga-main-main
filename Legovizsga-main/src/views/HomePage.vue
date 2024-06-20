@@ -222,6 +222,7 @@ background: linear-gradient(white, #38495a);
 -webkit-text-fill-color: transparent;
 //   background-clip: text;
 // text-fill-color: transparent;
+
 top: 40%;
 left: 0;
 right: 0;
@@ -394,6 +395,8 @@ color: #38495a;
 
 
 .left-container {
+  // border: 4px solid #ccc;
+  // border-radius: 11px;
   flex: 0 0 20%;
   display: flex;
   flex-direction: column;
@@ -447,10 +450,10 @@ color: #38495a;
 
   width: 100%;
   max-width: 250px;
-  padding: 20px;
+  padding: 4px;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
   border-radius: 11px;
-  background-color: white;
+  background-color: rgb(204, 191, 191);
 }
 
 .content {
