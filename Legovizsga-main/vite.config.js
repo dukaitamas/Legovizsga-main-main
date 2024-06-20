@@ -12,6 +12,14 @@ export default defineConfig({
     },
   },
 
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "compass-mixins/lib/compass";`
+      }
+    }
+  },
+
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
   }

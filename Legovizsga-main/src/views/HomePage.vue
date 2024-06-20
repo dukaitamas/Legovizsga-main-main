@@ -56,7 +56,12 @@ const logout = () => {
       <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
     </div>
 
-    <div class="main-content">
+    <div class="main-content ">
+
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+
       <div class="left-container">
         <div class="calendly-container">
           <CalendlyWidget url="https://calendly.com/tamasdukai7/vizsgadokumentacio-leadas-jedlik-important" />
@@ -64,40 +69,232 @@ const logout = () => {
 
         </div>
       </div>
-      
+
       <div class="center-container">
+        <!-- <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div> -->
+
+
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+
+        <svg width="0" height="0">
+          <defs>
+            <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100%" y2="0">
+              <stop stop-color="white" offset="0%" />
+              <stop stop-color="#38495a" offset="100%" />
+            </linearGradient>
+          </defs>
+        </svg>
+
         <div class="content">
-          <h1>Üdvözöljük a LEGO weboldalon!</h1>
-          <p>Itt találja a legjobb LEGO készleteket.</p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, nihil. Molestiae ullam enim neque laborum, et quo quod velit officiis laudantium asperiores,
-           amet sint sed totam. Delectus laboriosam doloremque earum.
-           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia consequuntur quae eum sint facilis ea pariatur labore, delectus nesciunt nihil tenetur aliquam atque,
+          <h1 class="text">Üdvözöljük a LEGO weboldalon!</h1>
+
+
+          <p class="text">Itt találja a legjobb LEGO készleteket.</p>
+          <div class="text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, nihil. Molestiae ullam enim neque laborum,
+            et
+            quo quod velit officiis laudantium asperiores,
+            amet sint sed totam. Delectus laboriosam doloremque earum.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia consequuntur quae eum sint facilis ea pariatur
+            labore, delectus nesciunt nihil tenetur aliquam atque,
             ullam rerum natus necessitatibus quis nemo illum.
+          </div>
 
         </div>
       </div>
 
       <div class="right-container">
         <div class="search-container">
-          <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..." class="nabla search-input fs-4 px-2 py-1 mb-2 bg-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2" />
+          <input type="text" v-model="searchQuery" @input="search" placeholder="Keresés..."
+            class="nabla search-input fs-4 px-2 py-1 mb-2 bg-dark bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2" />
           <h3 class="honk fs-2">Témák:</h3>
           <ul>
-            <li v-for="theme in themes" :key="theme.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ theme.name }}</li>
+            <li v-for="theme in themes" :key="theme.id" style="list-style-type: none;"
+              class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2">
+              👷{{ theme.name }}</li>
           </ul>
-          <button v-if="themesPagination.next_page_url" @click="loadMoreThemes" class="honk fs-3 my-0 py-1 paginationloadmorebutton mb-3" >Továbbiak betöltése</button>
+          <button v-if="themesPagination.next_page_url" @click="loadMoreThemes"
+            class="honk fs-3 my-0 py-1 paginationloadmorebutton mb-3">Továbbiak betöltése</button>
 
           <h3 class="honk fs-2">Szettek:</h3>
           <ul>
-            <li v-for="set in sets" :key="set.id" style="list-style-type: none;" class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2"> 👷{{ set.setName }}</li>
+            <li v-for="set in sets" :key="set.id" style="list-style-type: none;"
+              class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2">
+              👷{{ set.setName }}</li>
           </ul>
-          <button v-if="setsPagination.next_page_url" @click="loadMoreSets" class="honk fs-3 my-0 py-1 paginationloadmorebutton">Továbbiak betöltése</button>
+          <button v-if="setsPagination.next_page_url" @click="loadMoreSets"
+            class="honk fs-3 my-0 py-1 paginationloadmorebutton">Továbbiak betöltése</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "compass-mixins/lib/compass";
+
+
+
+// n is number of stars required
+@function multiple-box-shadow($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  }
+
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+
+html {
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+}
+
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animStar 50s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: animStar 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation: animStar 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+
+h1 {
+// position: absolute;
+background: linear-gradient(white, #38495a);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+//   background-clip: text;
+// text-fill-color: transparent;
+top: 40%;
+left: 0;
+right: 0;
+color: #fff;
+text-align: center;
+font-family: 'lato', sans-serif;
+font-weight: 300;
+font-size: 50px;
+letter-spacing: 10px;
+margin-top: 10px;
+padding-left: 10px;
+}
+
+.text {
+background: linear-gradient(white, #38495a);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+// background-clip: text;
+// text-fill-color: transparent;
+
+// Fallback for browsers that don't support background-clip: text
+color: #38495a;
+}
+// h1 {
+//   // position: absolute;
+
+//   top: 40%;
+//   left: 0;
+//   right: 0;
+//   color: #e2bfbf;
+//   text-align: center;
+//   font-family: 'lato', sans-serif;
+//   font-weight: 300;
+//   font-size: 50px;
+//   letter-spacing: 10px;
+//   margin-top: 10px;
+//   padding-left: 10px;
+// }
+
+// .text{
+//  color:#e2bfbf;
+// .text {
+//   background: linear-gradient(white, #233d57);
+//   // -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// color: #ccc;
+//   // Fallback for browsers that don't support the WebKit properties
+//   color: #38495a;
+//   // Additional CSS for SVG mask
+//   display: inline-block;
+//   mask-image: url(#gradient);
+//   -webkit-mask-image: url(#gradient);
+// }
+// }
+
+
+// Fallback for browsers that don't support background-clip: text
+
+
+
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+
+
 
 .nabla {
   font-family: "Nabla", system-ui;
@@ -107,13 +304,14 @@ const logout = () => {
   font-variation-settings:
     "EDPT" 60,
     "EHLT" 20;
-    /* "EDPT" 100,
+  /* "EDPT" 100,
     "EHLT" 12; */
 
-    /* legördülő lista betűstílusa állítható élőben 
+  /* legördülő lista betűstílusa állítható élőben 
     a CSS full axis variable-vel EDPT EHLT
     -tól -ig értékei az index.html headerben találhatóak */
 }
+
 .honk {
   font-family: "Honk", system-ui;
   font-optical-sizing: auto;
@@ -122,17 +320,18 @@ const logout = () => {
   font-variation-settings:
     "MORF" 13,
     "SHLN" 22;
-    /* "MORF" 13,
+  /* "MORF" 13,
     "SHLN" 22; */
-    /* élőben variálható a font-morph és a font shadow 
+  /* élőben variálható a font-morph és a font shadow 
     a MORF és SHLN értékekkel */
-    /* a 0-tól ...-ig értékek az index.html headerben vannak a linkek */
+  /* a 0-tól ...-ig értékek az index.html headerben vannak a linkek */
 }
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 .top-bar {
@@ -142,7 +341,7 @@ const logout = () => {
   padding: 10px;
   /* background-color: yellow; */
   /* background-color: #1a1a1a; */
- /* background: radial-gradient(circle at center,#1a1546,#040411 40%); */
+  /* background: radial-gradient(circle at center,#1a1546,#040411 40%); */
   background-image: url('@/assets/css/images/legobackgroundresized.png');
 }
 
@@ -162,7 +361,7 @@ const logout = () => {
   background-color: #da1818;
 }
 
-.blog-button{
+.blog-button {
   padding: 10px 20px;
   border: none;
   background-color: rgba(128, 13, 236, 0.84);
@@ -180,11 +379,16 @@ const logout = () => {
 }
 
 .main-content {
+  // background-color: #2e1fb9;
+  background-color: #0a0349;
+
   display: flex;
   width: 100%;
   padding: 20px;
   justify-content: space-between;
+
 }
+
 
 .left-container {
   flex: 0 0 20%;
@@ -223,7 +427,7 @@ const logout = () => {
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
 }
 
-.paginationloadmorebutton{
+.paginationloadmorebutton {
   width: 100%;
   padding: 10px;
   border: 2px solid #ccc;
