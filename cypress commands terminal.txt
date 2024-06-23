@@ -1,0 +1,14 @@
+npm install cypress --save-dev
+
+npx cypress open     Open Cypress to create folder structure
+
+cypress/
+  ├── fixtures/
+  ├── integration/
+  ├── plugins/
+  └── support/    ha nem hozza létre ezt a könytárstruktúrát, akkor kézzel kell
+                    létrehozni a mappát/filet->integration
+
+       
+npx cypress run     headless mode
+

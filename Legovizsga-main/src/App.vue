@@ -25,70 +25,92 @@ const logout = () => {
 
 
 
+document.addEventListener('keydown', (event) => {
+  const legoKick = document.getElementById('legoKick');
+  const runningLego = document.getElementById('runningLego');
 
+  switch (event.key) {
+    case 'ArrowUp':
+      moveUp(legoKick);
+      moveUp(runningLego);
+      break;
+    case 'ArrowDown':
+      moveDown(legoKick);
+      moveDown(runningLego);
+      break;
+    case 'ArrowLeft':
+      moveLeft(legoKick);
+      moveLeft(runningLego);
+      break;
+    case 'ArrowRight':
+      moveRight(legoKick);
+      moveRight(runningLego);
+      break;
+  }
+});
 
-// const legoKick = ref(null);
-// const runningLego = ref(null);
+const legoKick = ref(null);
+const runningLego = ref(null);
 
-// const moveUp = (element) => {
-//   const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-//   element.style.top = `${top - 100}px`;
-// };
+const moveUp = (element) => {
+  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
+  element.style.top = `${top - 100}px`;
+};
 
-// const moveDown = (element) => {
-//   const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
-//   element.style.top = `${top + 100}px`;
-// };
+const moveDown = (element) => {
+  const top = parseInt(window.getComputedStyle(element).getPropertyValue('top'));
+  element.style.top = `${top + 100}px`;
+};
 
-// const moveLeft = (element) => {
-//   const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-//   element.style.left = `${left - 100}px`;
-// };
+const moveLeft = (element) => {
+  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
+  element.style.left = `${left - 100}px`;
+};
 
-// const moveRight = (element) => {
-//   const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
-//   element.style.left = `${left + 100}px`;
-// };
+const moveRight = (element) => {
+  const left = parseInt(window.getComputedStyle(element).getPropertyValue('left'));
+  element.style.left = `${left + 100}px`;
+};
 
-// const pauseAnimation = (element) => {
-//   element.style.animationPlayState = 'paused';
-// };
+const pauseAnimation = (element) => {
+  element.style.animationPlayState = 'paused';
+};
 
-// const handleKeydown = (event) => {
-//   console.log(event.key); // Log the key value to the console
-//   if (legoKick.value && runningLego.value) {
-//     switch (event.key) {
-//       case 'ArrowUp':
-//         pauseAnimation(legoKick.value);
-//         pauseAnimation(runningLego.value);
-//         moveUp(legoKick.value);
-//         moveUp(runningLego.value);
-//         break;
-//       case 'ArrowDown':
-//         pauseAnimation(legoKick.value);
-//         pauseAnimation(runningLego.value);
-//         moveDown(legoKick.value);
-//         moveDown(runningLego.value);
-//         break;
-//       case 'ArrowLeft':
-//         pauseAnimation(legoKick.value);
-//         pauseAnimation(runningLego.value);
-//         moveLeft(legoKick.value);
-//         moveLeft(runningLego.value);
-//         break;
-//       case 'ArrowRight':
-//         pauseAnimation(legoKick.value);
-//         pauseAnimation(runningLego.value);
-//         moveRight(legoKick.value);
-//         moveRight(runningLego.value);
-//         break;
-//     }
-//   }
-// };
+const handleKeydown = (event) => {
+  console.log(event.key); // Log the key value to the console
+  if (legoKick.value && runningLego.value) {
+    switch (event.key) {
+      case 'ArrowUp':
+        pauseAnimation(legoKick.value);
+        pauseAnimation(runningLego.value);
+        moveUp(legoKick.value);
+        moveUp(runningLego.value);
+        break;
+      case 'ArrowDown':
+        pauseAnimation(legoKick.value);
+        pauseAnimation(runningLego.value);
+        moveDown(legoKick.value);
+        moveDown(runningLego.value);
+        break;
+      case 'ArrowLeft':
+        pauseAnimation(legoKick.value);
+        pauseAnimation(runningLego.value);
+        moveLeft(legoKick.value);
+        moveLeft(runningLego.value);
+        break;
+      case 'ArrowRight':
+        pauseAnimation(legoKick.value);
+        pauseAnimation(runningLego.value);
+        moveRight(legoKick.value);
+        moveRight(runningLego.value);
+        break;
+    }
+  }
+};
 
-// onMounted(() => {
-//   document.addEventListener('keydown', handleKeydown);
-// });
+onMounted(() => {
+  document.addEventListener('keydown', handleKeydown);
+});
 
 
 
