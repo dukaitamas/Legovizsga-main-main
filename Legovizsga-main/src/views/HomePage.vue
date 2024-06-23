@@ -2,7 +2,8 @@
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import CalendlyWidget from './CalendlyWidget.vue';
-import axios from 'axios';
+import axios from 'axios'; // ez a sima axios
+//import axios from '@/axios'; //ez az axios.js fájlra mutat
 
 const searchQuery = ref('');
 
@@ -10,7 +11,26 @@ const sets = ref([]);
 const themes = ref([]);
 const setsPagination = ref({});
 const themesPagination = ref({});
+const isLoggedIn = ref(true);
+const user = ref({});
+const router = useRouter();
 
+
+//user info
+
+// const fetchUser = async () => {
+//   try {
+//     const response = await axios.get('/api/user');
+//     user.value = response.data;
+//   } catch (error) {
+//     console.error('Error fetching user:', error);
+//   }
+// };
+
+
+
+
+//szettek és témák
 const search = async (page = 1) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/search`, {
@@ -38,14 +58,22 @@ const loadMoreThemes = () => {
   }
 };
 
-const isLoggedIn = ref(true);
-const router = useRouter();
+
 
 const logout = () => {
   isLoggedIn.value = false;
   router.replace('/login');
   window.location.replace('/');
 };
+
+
+// onMounted(() => {
+//   fetchUser();
+//   search();
+// });
+
+
+
 </script>
 
 <template>
@@ -124,7 +152,10 @@ const logout = () => {
           <ul>
             <li v-for="set in sets" :key="set.id" style="list-style-type: none;"
               class="nabla fs-5 bg-success p-2  bg-opacity-75 border-warning border border-opacity-75 border-3 rounded-2">
-              👷{{ set.setName }}</li>
+              👷{{ set.setName }}
+              <button v-if="user.role === 'admin'" @click="deleteSet(set.id)" class="delete-button">Törlés</button>
+
+            </li>
           </ul>
           <button v-if="setsPagination.next_page_url" @click="loadMoreSets"
             class="honk fs-3 my-0 py-1 paginationloadmorebutton">Továbbiak betöltése</button>
