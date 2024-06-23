@@ -7,10 +7,16 @@ import { defineAsyncComponent } from 'vue';
 // import { ref, onMounted } from 'vue';
 
 const route = useRoute();
+const router = useRouter();
 const isLoggedIn = ref(false);
 
 const isLoginOrRegisterPage = computed(() => {
   return route.path === '/login' || route.path === '/registration';
+});
+
+
+const isBlogPage = computed(() => {
+  return route.path === '/blog';
 });
 
 const logout = () => {
@@ -195,7 +201,7 @@ onMounted(() => {
 
 
 <template class="backgroundall">
-  <div class="background" v-if="!isLoginOrRegisterPage">
+  <div class="background" v-if="!isLoginOrRegisterPage && !isBlogPage">
     <!-- Navigációs sáv és a többi tartalom -->
     <nav class="navbar navbar-expand-lg p-2 my-0 mx-0" id="lel">
       <div class="container-fluid ">
