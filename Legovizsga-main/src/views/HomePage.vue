@@ -58,7 +58,9 @@ const loadMoreThemes = () => {
   }
 };
 
-
+const goToBlog = () => {
+  router.push({ name: 'Blog' });
+};
 
 const logout = () => {
   isLoggedIn.value = false;
@@ -79,7 +81,7 @@ const logout = () => {
 <template>
   <div class=" ">
     <div class="top-bar">
-      <button @click="logout" class="honk blog-button fs-3 my-0 py-1 me-5">Tovább a blogra</button>
+      <button @click="goToBlog" class="honk blog-button fs-3 my-0 py-1 me-5">Tovább a blogra</button>
 
       <button @click="logout" class="honk logout-button fs-3 my-0 py-1">Kijelentkezés</button>
     </div>
