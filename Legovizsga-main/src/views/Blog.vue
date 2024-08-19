@@ -26,11 +26,25 @@ const createPost = async () => {
     // Először kérd le a CSRF cookie-t
     //await axios.get('/sanctum/csrf-cookie');
     await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+  // Most már elküldheted a posztot
 
-    // Most már elküldheted a posztot
+  const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('XSRF-TOKEN='))
+      ?.split('=')[1];
 
     //const response = await axios.post('/api/posts', newPost.value);
-    const response = await axios.post('http://127.0.0.1:8000/api/posts', newPost.value);
+    //const response = await axios.post('http://127.0.0.1:8000/api/posts', newPost.value);
+
+    const response = await axios.post(
+      'http://127.0.0.1:8000/api/posts',
+      newPost.value,
+      {
+        headers: {
+          'X-XSRF-TOKEN': csrfToken,
+        },
+      }
+    );
 
     posts.value.push(response.data);
     newPost.value.title = '';

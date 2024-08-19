@@ -29,15 +29,54 @@ const ellenor = () => {
   }
 };
 
+// const register = () => {
+//   ellenor(); // Perform validation before sending the request
+//   if (!error.value) { // Proceed only if there is no error
+
+//     axios.post('http://127.0.0.1:8000/api/register', {
+//       name: userName.value,
+//       email: email.value,
+//       password: password.value,
+//       password_confirmation: password_confirmation.value,
+//     })
+//       .then(response => {
+//         console.log('Registration successful', response.data);
+//         successMessage.value = 'A regisztráció sikeres!'; // Set success message
+//         // Clear form fields
+//         userName.value = '';
+//         email.value = '';
+//         password.value = '';
+//         password_confirmation.value = '';
+//       })
+//       .catch(err => {
+//         if (err.response && err.response.status === 422) {
+//           // Customize error messages
+//           errors.value = {};
+//           for (const key in err.response.data.errors) {
+//             if (err.response.data.errors[key].includes("The email has already been taken.")) {
+//               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
+//             } else if (err.response.data.errors[key].includes("The password field confirmation does not match.")) {
+//               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
+//             } else {
+//               errors.value[key] = err.response.data.errors[key];
+//             }
+//           }
+//         }
+//       });
+//   }
+// };
+
 const register = () => {
   ellenor(); // Perform validation before sending the request
   if (!error.value) { // Proceed only if there is no error
-    axios.post('http://127.0.0.1:8000/api/register', {
-      name: userName.value,
-      email: email.value,
-      password: password.value,
-      password_confirmation: password_confirmation.value,
-    })
+    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
+      // CSRF token kérés sikeres, folytatjuk a regisztrációt
+      axios.post('http://127.0.0.1:8000/api/register', {
+        name: userName.value,
+        email: email.value,
+        password: password.value,
+        password_confirmation: password_confirmation.value,
+      })
       .then(response => {
         console.log('Registration successful', response.data);
         successMessage.value = 'A regisztráció sikeres!'; // Set success message
@@ -62,8 +101,10 @@ const register = () => {
           }
         }
       });
+    });
   }
 };
+
 </script>
 
 <template>
