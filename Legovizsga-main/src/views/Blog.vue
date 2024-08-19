@@ -3,24 +3,35 @@ import axios from '@/axios'; // Import the configured Axios instance
 
 import { ref, onMounted } from 'vue';
 //import axios from '../axios';
+axios.defaults.withCredentials = true; // Ez biztosítja, hogy a hitelesítési adatok (cookie-k) elküldésre kerüljenek minden kéréshez
+
 
 const posts = ref([]);
 const newPost = ref({ title: '', content: '' });
 const isLoggedIn = ref(true);
 
 const fetchPosts = async () => {
-  const response = await axios.get('/api/posts');
-  posts.value = response.data;
+  // const response = await axios.get('/api/posts');
+  // posts.value = response.data;
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/posts');
+    posts.value = response.data;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+  }
 };
 
 const createPost = async () => {
   try {
     // Először kérd le a CSRF cookie-t
-    await axios.get('/sanctum/csrf-cookie');
+    //await axios.get('/sanctum/csrf-cookie');
+    await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
 
     // Most már elküldheted a posztot
 
-    const response = await axios.post('/api/posts', newPost.value);
+    //const response = await axios.post('/api/posts', newPost.value);
+    const response = await axios.post('http://127.0.0.1:8000/api/posts', newPost.value);
+
     posts.value.push(response.data);
     newPost.value.title = '';
     newPost.value.content = '';
