@@ -33,3 +33,5 @@ that package (version shown in the console error) in package.json. Then npm inst
 
 npm audit fix
 
+npm i axios (installálni és updatelni az axiost)
+

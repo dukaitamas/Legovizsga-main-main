@@ -1,9 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
-
-axios.defaults.withCredentials = true;
-
 
 // State variables
 const userName = ref("");
@@ -17,11 +14,7 @@ const successMessage = ref(""); // For success message
 
 // Methods
 const ell = () => {
-  if (password.value.length >= 8) {
-    buttonDisabled.value = false;
-  } else {
-    buttonDisabled.value = true;
-  }
+  buttonDisabled.value = password.value.length < 8;
 };
 
 const ellenor = () => {
@@ -32,48 +25,10 @@ const ellenor = () => {
   }
 };
 
-// const register = () => {
-//   ellenor(); // Perform validation before sending the request
-//   if (!error.value) { // Proceed only if there is no error
-
-//     axios.post('http://127.0.0.1:8000/api/register', {
-//       name: userName.value,
-//       email: email.value,
-//       password: password.value,
-//       password_confirmation: password_confirmation.value,
-//     })
-//       .then(response => {
-//         console.log('Registration successful', response.data);
-//         successMessage.value = 'A regisztráció sikeres!'; // Set success message
-//         // Clear form fields
-//         userName.value = '';
-//         email.value = '';
-//         password.value = '';
-//         password_confirmation.value = '';
-//       })
-//       .catch(err => {
-//         if (err.response && err.response.status === 422) {
-//           // Customize error messages
-//           errors.value = {};
-//           for (const key in err.response.data.errors) {
-//             if (err.response.data.errors[key].includes("The email has already been taken.")) {
-//               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
-//             } else if (err.response.data.errors[key].includes("The password field confirmation does not match.")) {
-//               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
-//             } else {
-//               errors.value[key] = err.response.data.errors[key];
-//             }
-//           }
-//         }
-//       });
-//   }
-// };
-
 const register = () => {
   ellenor(); // Perform validation before sending the request
   if (!error.value) { // Proceed only if there is no error
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
-      // CSRF token kérés sikeres, folytatjuk a regisztrációt
+    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(() => {
       axios.post('http://127.0.0.1:8000/api/register', {
         name: userName.value,
         email: email.value,
@@ -115,44 +70,32 @@ const register = () => {
     <div class="downarrow">↓</div>
 
     <div class="form-container m-5 p-1">
-      <!-- <div class="downarrow mb-5">↓</div> -->
-
       <h4 class="honk form-container2 fs-1 mb-5" id="RegistrationText">REGISZTRÁCIÓ</h4>
-      <!-- <div class="downarrow">↓</div> -->
 
       <div class="container my-5">
-              <!-- <div class="downarrow">↓</div> -->
-
         <section class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
-            <input v-model="userName" required type="text" class="form-control" id="inputName"
-              placeholder="Kérem ide írja be a felhasználónevét!">
+            <input v-model="userName" required type="text" class="form-control" id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
           </div>
           <br>
           <div class="col-md-12">
             <label for="inputEmail4" class="form-label fs-5 text-light fw-bold">Email:</label>
-            <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email"
-              placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
+            <input v-model="email" required type="email" class="form-control" id="inputEmail4" autocomplete="email" placeholder="Kérem ide írja be az email címét: pl 123@gmail.com">
           </div>
           <br>
           <div class="col-md-12">
             <label for="inputPassword4" class="form-label fs-5 text-light fw-bold">Jelszó:</label>
-            <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4"
-              autocomplete="current-password" placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
+            <input @keyup="ell" v-model="password" required type="password" class="form-control" id="inputPassword4" autocomplete="current-password" placeholder="A jelszónak legalább 8 karakter hosszúnak kell lennie!">
           </div>
           <br>
           <div class="col-md-12">
-            <label for="inputPasswordConfirmation" class="form-label fs-5 text-light fw-bold">Jelszó
-              megerősítése:</label>
-            <input v-model="password_confirmation" required type="password" class="form-control"
-              id="inputPasswordConfirmation" autocomplete="current-password"
-              placeholder="Kérem erősítse meg a jelszót!">
+            <label for="inputPasswordConfirmation" class="form-label fs-5 text-light fw-bold">Jelszó megerősítése:</label>
+            <input v-model="password_confirmation" required type="password" class="form-control" id="inputPasswordConfirmation" autocomplete="current-password" placeholder="Kérem erősítse meg a jelszót!">
           </div>
           <br>
           <div class="col-12 p-3">
-            <button :disabled="buttonDisabled" type="submit"
-              class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
+            <button :disabled="buttonDisabled" type="submit" class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
           </div>
         </section>
         <div class="success" v-if="successMessage">{{ successMessage }}</div>
@@ -169,94 +112,34 @@ const register = () => {
 
 <style scoped>
 /* Add any necessary styling here */
-
 .downarrow {
   color: hsl(0, 20%, 95%);
-  /* color: hwb(0 94% 4%);
-  color: rgb(245, 240, 240);
-  color: #f5f0f0;
-  mindegyik ugyanazt jelenti, csak másképp van megadva
-  click a színválasztóra */
-  
- text-align: center;
-    width: 450px;
-    position: absolute;
-    bottom: 41rem;
-    left: calc(50% - 225px);
-    margin: 0 auto;
-    font-size: 8rem;
-    opacity: 1;
-    transition: opacity .3s ease;
-  font-family: 'Bebas Neue', cursive, sans-serif  ;
-    pointer-events: none;
-    z-index: -1;
-    transform-origin: center;
-  animation: blink 2s infinite;
-
-
-    /* -webkit-animation: bounce 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
-    /* animation: jump 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
-    animation: blink 2s infinite, jump 3s cubic-bezier(.37,0,.21,1.02) infinite;
-
+  text-align: center;
+  width: 450px;
+  position: absolute;
+  bottom: 41rem;
+  left: calc(50% - 225px);
+  margin: 0 auto;
+  font-size: 8rem;
+  opacity: 1;
+  transition: opacity .3s ease;
+  font-family: 'Bebas Neue', cursive, sans-serif;
+  pointer-events: none;
+  z-index: -1;
+  transform-origin: center;
+  animation: blink 2s infinite, jump 3s cubic-bezier(.37,0,.21,1.02) infinite;
 }
 
 @keyframes blink {
-  20%,
-  24%,
-  55% {
-    color: #111;
-    text-shadow: none;
-  }
-
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
-  100% {
-    /* color: #fccaff;
-    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
-      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9; */
-  }
+  20%, 24%, 55% { color: #111; text-shadow: none; }
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { }
 }
 
-
-@keyframes jump{
-    0%,20%,50%,80%,to {
-        transform: translateZ(-2px) translateY(5px)
-    }
-
-    40% {
-        transform: rotateY(180deg) translateZ(-2px) translateY(-35px)
-    }
-
-    60% {
-        transform: translateZ(-2px) translateY(-25px)
-    }
-
-    from {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.92),
-    0 0 30px rgba(202,228,225,0.34),
-    0 0 12px rgba(30,132,242,0.52),
-    0 0 21px rgba(30,132,242,0.92),
-    0 0 34px rgba(30,132,242,0.78),
-    0 0 54px rgba(30,132,242,0.92);
-  }
-  to {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.98),
-    0 0 30px rgba(202,228,225,0.42),
-    0 0 12px rgba(30,132,242,0.58),
-    0 0 22px rgba(30,132,242,0.84),
-    0 0 38px rgba(30,132,242,0.88),
-    0 0 60px rgba(30,132,242,1);
-  }
-};
+@keyframes jump {
+  0%, 20%, 50%, 80%, to { transform: translateZ(-2px) translateY(5px); }
+  40% { transform: rotateY(180deg) translateZ(-2px) translateY(-35px); }
+  60% { transform: translateZ(-2px) translateY(-25px); }
+}
 
 #RegistrationText {
   text-align: center;
@@ -266,7 +149,7 @@ const register = () => {
 input {
   border-radius: 11px;
   color: white;
-  background-color: antiquewhite, 0.1;
+  background-color: antiquewhite;
   border: 0.1px solid rgba(191, 202, 202, 0.5);
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
   border-width: 4px 1.25em;
@@ -279,12 +162,10 @@ input {
   background-color: black;
   opacity: 0.8;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
-  
 }
 
 .form-container {
   background-color: transparent;
-  /* Átlátszó háttérszín */
   opacity: 94%;
   width: 33vw;
 }

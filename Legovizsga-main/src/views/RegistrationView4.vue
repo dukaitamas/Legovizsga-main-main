@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { onMounted } from 'vue';
+
+axios.defaults.withCredentials = true;
+
 
 // State variables
 const userName = ref("");
@@ -32,6 +36,7 @@ const ellenor = () => {
 // const register = () => {
 //   ellenor(); // Perform validation before sending the request
 //   if (!error.value) { // Proceed only if there is no error
+
 //     axios.post('http://127.0.0.1:8000/api/register', {
 //       name: userName.value,
 //       email: email.value,
@@ -54,7 +59,7 @@ const ellenor = () => {
 //           for (const key in err.response.data.errors) {
 //             if (err.response.data.errors[key].includes("The email has already been taken.")) {
 //               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
-//             } else if (err.response.data.errors[key].includes("The password confirmation does not match.")) {
+//             } else if (err.response.data.errors[key].includes("The password field confirmation does not match.")) {
 //               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
 //             } else {
 //               errors.value[key] = err.response.data.errors[key];
@@ -65,86 +70,67 @@ const ellenor = () => {
 //   }
 // };
 
-// const register = () => {
-//   ellenor(); // Perform validation before sending the request
-//   if (!error.value) { // Proceed only if there is no error
-//     axios.post('http://127.0.0.1:8000/api/register', {
-//       name: userName.value,
-//       email: email.value,
-//       password: password.value,
-//       password_confirmation: password_confirmation.value,
-//     })
-//       .then(response => {
-//         console.log('Registration successful', response.data);
-//         successMessage.value = 'A regisztráció sikeres!'; // Set success message
-//         // Clear form fields
-//         userName.value = '';
-//         email.value = '';
-//         password.value = '';
-//         password_confirmation.value = '';
-//       })
-//       .catch(err => {
-//         if (err.response && err.response.status === 422) {
-//           // Customize error messages
-//           errors.value = {};
-//           for (const key in err.response.data.errors) {
-//             if (err.response.data.errors[key].includes("The email has already been taken.")) {
-//               errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
-//             } else if (err.response.data.errors[key].includes("The password confirmation does not match.")) {
-//               errors.value[key] = ["A jelszó megerősítése nem egyezik."];
-//             } else {
-//               errors.value[key] = err.response.data.errors[key];
-//             }
-//           }
-//         }
-//       });
-//   }
-// };
-
-const register = async () => {
-  try {
-    ellenor(); // Perform validation before sending the request
-    if (!error.value) { // Proceed only if there is no error
-      const response = await axios.post('http://127.0.0.1:8000/api/register', {
+const register = () => {
+  ellenor(); // Perform validation before sending the request
+  if (!error.value) { // Proceed only if there is no error
+    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
+      // CSRF token kérés sikeres, folytatjuk a regisztrációt
+      axios.post('http://127.0.0.1:8000/api/register', {
         name: userName.value,
         email: email.value,
         password: password.value,
         password_confirmation: password_confirmation.value,
-      });
-      console.log('Registration successful', response.data);
-      successMessage.value = 'A regisztráció sikeres!';
-      userName.value = '';
-      email.value = '';
-      password.value = '';
-      password_confirmation.value = '';
-    }
-  } catch (err) {
-    if (err.response && err.response.status === 422) {
-      errors.value = {};
-      for (const key in err.response.data.errors) {
-        if (err.response.data.errors[key].includes("The email has already been taken.")) {
-          errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
-        } else if (err.response.data.errors[key].includes("The password confirmation does not match.")) {
-          errors.value[key] = ["A jelszó megerősítése nem egyezik."];
-        } else {
-          errors.value[key] = err.response.data.errors[key];
+      })
+      .then(response => {
+        console.log('Registration successful', response.data);
+        successMessage.value = 'A regisztráció sikeres!'; // Set success message
+        // Clear form fields
+        userName.value = '';
+        email.value = '';
+        password.value = '';
+        password_confirmation.value = '';
+      })
+      .catch(err => {
+        if (err.response && err.response.status === 422) {
+          // Customize error messages
+          errors.value = {};
+          for (const key in err.response.data.errors) {
+            if (err.response.data.errors[key].includes("The email has already been taken.")) {
+              errors.value[key] = ["Az e-mail már foglalt. Kérem használjon másik email címet!"];
+            } else if (err.response.data.errors[key].includes("The password field confirmation does not match.")) {
+              errors.value[key] = ["A jelszó megerősítése nem egyezik."];
+            } else {
+              errors.value[key] = err.response.data.errors[key];
+            }
+          }
         }
-      }
-    }
+      });
+    });
   }
 };
 
-
+onMounted(() => {
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
+  document.head.appendChild(script);
+});
 
 </script>
 
 <template>
   <div class="registration-page p-0 m-0">
+    <div class="downarrow">↓</div>
+
     <div class="form-container m-5 p-1">
-      <h4 class="honk form-container2 fs-1" id="RegistrationText">REGISZTRÁCIÓ</h4>
-      <div class="container">
-        <!-- <div class="container w-25"></div> -->
-        <form class="row g-3" @submit.prevent="register">
+      <!-- <div class="downarrow mb-5">↓</div> -->
+
+      <h4 class="honk form-container2 fs-1 mb-5" id="RegistrationText">REGISZTRÁCIÓ</h4>
+      <!-- <div class="downarrow">↓</div> -->
+
+      <div class="container my-5">
+              <!-- <div class="downarrow">↓</div> -->
+
+        <section class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
             <input v-model="userName" required type="text" class="form-control" id="inputName"
@@ -172,12 +158,10 @@ const register = async () => {
           </div>
           <br>
           <div class="col-12 p-3">
-            <!-- <button :disabled="buttonDisabled" type="submit"
-              class="honk registration-button fs-5 btn btn-dark">Regisztráció</button> -->
-              <button  type="submit"
+            <button :disabled="buttonDisabled" type="submit"
               class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
           </div>
-        </form>
+        </section>
         <div class="success" v-if="successMessage">{{ successMessage }}</div>
         <div class="error">{{ error }}</div>
         <div v-if="Object.keys(errors).length" class="errors">
@@ -193,23 +177,99 @@ const register = async () => {
 <style scoped>
 /* Add any necessary styling here */
 
+.downarrow {
+  color: hsl(0, 20%, 95%);
+  /* color: hwb(0 94% 4%);
+  color: rgb(245, 240, 240);
+  color: #f5f0f0;
+  mindegyik ugyanazt jelenti, csak másképp van megadva
+  click a színválasztóra */
+  
+ text-align: center;
+    width: 450px;
+    position: absolute;
+    bottom: 41rem;
+    left: calc(50% - 225px);
+    margin: 0 auto;
+    font-size: 8rem;
+    opacity: 1;
+    transition: opacity .3s ease;
+  font-family: 'Bebas Neue', cursive, sans-serif  ;
+    pointer-events: none;
+    z-index: -1;
+    transform-origin: center;
+  animation: blink 2s infinite;
+
+
+    /* -webkit-animation: bounce 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
+    /* animation: jump 3s cubic-bezier(.37,0,.21,1.02) infinite,fonts 5s linear infinite; */
+    animation: blink 2s infinite, jump 3s cubic-bezier(.37,0,.21,1.02) infinite;
+
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    /* color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9; */
+  }
+}
+
+
+@keyframes jump{
+    0%,20%,50%,80%,to {
+        transform: translateZ(-2px) translateY(5px)
+    }
+
+    40% {
+        transform: rotateY(180deg) translateZ(-2px) translateY(-35px)
+    }
+
+    60% {
+        transform: translateZ(-2px) translateY(-25px)
+    }
+
+    from {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.92),
+    0 0 30px rgba(202,228,225,0.34),
+    0 0 12px rgba(30,132,242,0.52),
+    0 0 21px rgba(30,132,242,0.92),
+    0 0 34px rgba(30,132,242,0.78),
+    0 0 54px rgba(30,132,242,0.92);
+  }
+  to {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+  }
+};
+
 #RegistrationText {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.honk {
-  font-family: "Honk", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "MORF" 13,
-    "SHLN" 22;
-    /* élőben variálható a font-morph és a font shadow 
-    a MORF és SHLN értékekkel */
-    /* a 0-tól ...-ig értékek az index.html headerben vannak a linkek */
-}
 input {
   border-radius: 11px;
   color: white;
@@ -221,11 +281,12 @@ input {
 }
 
 .registration-button {
+  border: 2px solid rgb(43, 34, 34, 0.6);
   border-radius: 11px;
   background-color: black;
   opacity: 0.8;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.9);
-
+  
 }
 
 .form-container {
