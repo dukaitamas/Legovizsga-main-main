@@ -26,10 +26,14 @@ const ellenor = () => {
 };
 
 const register = () => {
+  console.log("Register function called"); // Teszteljük, hogy fut-e a függvény
+
   ellenor(); // Perform validation before sending the request
   if (!error.value) { // Proceed only if there is no error
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(() => {
-      axios.post('http://127.0.0.1:8000/api/register', {
+    // axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(() => {
+    //   axios.post('http://127.0.0.1:8000/api/register', {
+        axios.get('http://localhost:8000/sanctum/csrf-cookie').then(() => {
+          axios.post('http://localhost:8000/api/register', {
         name: userName.value,
         email: email.value,
         password: password.value,
@@ -73,7 +77,7 @@ const register = () => {
       <h4 class="honk form-container2 fs-1 mb-5" id="RegistrationText">REGISZTRÁCIÓ</h4>
 
       <div class="container my-5">
-        <section class="row g-3" @submit.prevent="register">
+        <div class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
             <input v-model="userName" required type="text" class="form-control" id="inputName" placeholder="Kérem ide írja be a felhasználónevét!">
@@ -95,9 +99,9 @@ const register = () => {
           </div>
           <br>
           <div class="col-12 p-3">
-            <button :disabled="buttonDisabled" type="submit" class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
+            <button :disabled="buttonDisabled" @click="register" type="submit" class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
           </div>
-        </section>
+        </div>
         <div class="success" v-if="successMessage">{{ successMessage }}</div>
         <div class="error">{{ error }}</div>
         <div v-if="Object.keys(errors).length" class="errors">
