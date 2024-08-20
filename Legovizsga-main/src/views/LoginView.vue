@@ -3,6 +3,14 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
+axios.defaults.withCredentials = true;
+//A Laravel Sanctum használatához elengedhetetlen, 
+//hogy a CSRF token megfelelően legyen beállítva. 
+//Győződj meg róla, hogy a Vue.js alkalmazásban az axios 
+//megfelelően inicializálja a withCredentials beállítást. 
+//Ez biztosítja, hogy a sütik (köztük a CSRF token) megfelelően 
+//átadásra kerüljenek a kérések során.
+// beletéve a blog.vue-be a registrationview.vue-be loginview.vue-be
 
 // State variables
 const email = ref("");

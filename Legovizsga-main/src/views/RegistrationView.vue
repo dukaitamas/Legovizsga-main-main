@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+
+
 // State variables
 const userName = ref("");
 const email = ref("");
