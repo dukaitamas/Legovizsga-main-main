@@ -123,7 +123,7 @@ const register = () => {
       <div class="container my-5">
               <!-- <div class="downarrow">↓</div> -->
 
-        <form class="row g-3" @submit.prevent="register">
+        <section class="row g-3" @submit.prevent="register">
           <div class="col-md-12">
             <label for="inputName" class="form-label fs-5 text-light fw-bold">Felhasználó neve:</label>
             <input v-model="userName" required type="text" class="form-control" id="inputName"
@@ -154,7 +154,7 @@ const register = () => {
             <button :disabled="buttonDisabled" type="submit"
               class="honk registration-button fs-5 btn btn-dark">Regisztráció</button>
           </div>
-        </form>
+        </section>
         <div class="success" v-if="successMessage">{{ successMessage }}</div>
         <div class="error">{{ error }}</div>
         <div v-if="Object.keys(errors).length" class="errors">
