@@ -62,11 +62,53 @@ onMounted(() => {
 </script>
 
 
-<template>
+<template> 
+
+<div class="container bg-info-subtle">
+        <header class="border-bottom lh-1 py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+              <a class="link-secondary" href="#">Subscribe</a>
+            </div>
+            <div class="col-4 text-center">
+              <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Large</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+              <a class="link-secondary" href="#" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                  viewBox="0 0 24 24">
+                  <title>Search</title>
+                  <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                  <path d="M21 21l-5.2-5.2"></path>
+                </svg>
+              </a>
+              <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            </div>
+          </div>
+        </header>
+
+        <div class="nav-scroller py-1 border-bottom">
+          <nav class="nav nav-underline justify-content-between">
+            <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
+          </nav>
+        </div>
+      </div>
 
 
-  <div class="container-fluid mt-5">
-    <h1 class="text-center">Blog</h1>
+  <div class="container-fluid my-0 bg-success-subtle">
+    <h1 class="text-center py-3">Blog</h1>
     <br />
     <br />
 
@@ -80,12 +122,12 @@ onMounted(() => {
       sértsd meg a weboldal "házirendjét".
     </p>
 
-    <div class="mt-4">
-      <div v-if="isLoggedIn" class="card p-4">
-        <h2 class="mb-4 text-center">Create a new post</h2>
+    <div class="mt-4 ">
+      <div v-if="isLoggedIn" class="card p-4 bg-body-secondary">
+        <h2 class="mb-4 text-center">Posztolj egyet;-)</h2>
         <form @submit.prevent="createPost">
           <div class="form-group mb-3">
-            <label for="title">Title:</label>
+            <label for="title">Cím:</label>
             <input
               type="text"
               v-model="newPost.title"
@@ -94,7 +136,7 @@ onMounted(() => {
             />
           </div>
           <div class="form-group mb-3">
-            <label for="content">Content:</label>
+            <label for="content">Tartalom:</label>
             <textarea
               v-model="newPost.content"
               class="form-control"
@@ -102,11 +144,11 @@ onMounted(() => {
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Create Post</button>
+          <div class="text-center"><button type="submit" class="btn btn-primary w-75 ">Klikk ide </button></div>
         </form>
       </div>
 
-      <h2 class="mt-5 text-center">All Posts</h2>
+      <h2 class="py-4 my-0 text-center">Az összes poszt:</h2>
       <div v-for="post in posts" :key="post.id" class="mb-4 p-3 border rounded">
         <h3>{{ post.title }}</h3>
         <p>{{ post.content }}</p>
@@ -125,7 +167,7 @@ onMounted(() => {
     <p>Kérlek tartsd tiszteletben a többi látogatót, ne légy tiszteletlen és ne sértsd meg a weboldal "házirendjét".</p>
 
     <div>
-       <h1>Blog</h1> --> -->
+       <h1>Blog</h1> --> 
       <!-- <div v-if="isLoggedIn">
         <h2>Create a new post</h2>
         <form @submit.prevent="createPost">
@@ -242,47 +284,7 @@ onMounted(() => {
         </symbol>
       </svg>
 
-      <div class="container">
-        <header class="border-bottom lh-1 py-3">
-          <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
-              <a class="link-secondary" href="#">Subscribe</a>
-            </div>
-            <div class="col-4 text-center">
-              <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Large</a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-              <a class="link-secondary" href="#" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                  viewBox="0 0 24 24">
-                  <title>Search</title>
-                  <circle cx="10.5" cy="10.5" r="7.5"></circle>
-                  <path d="M21 21l-5.2-5.2"></path>
-                </svg>
-              </a>
-              <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-            </div>
-          </div>
-        </header>
-
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-          <nav class="nav nav-underline justify-content-between">
-            <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
-          </nav>
-        </div>
-      </div>
+      
 
       <main class="container">
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
@@ -611,7 +613,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #0ae9c0 0%, #ACB6E5 100%); /* Színátmenetes háttér */
+  background: linear-gradient(135deg, #e9c5db 0%, #4e69e4 100%); /* Színátmenetes háttér */
   min-height: 100vh; /* Az oldal teljes magasságában */
   display: flex;
   justify-content: center;
@@ -624,7 +626,7 @@ p {
 }
 
 .card {
-  max-width: 100%;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -645,6 +647,8 @@ textarea {
 }
 
 .btn-primary {
+  /* display: flex;
+  justify-content: center; */
   background-color: #007bff;
   border-color: #007bff;
 }
@@ -656,11 +660,17 @@ textarea {
 
 .container {
   max-width: 100%;
+ 
+}
+
+.bg-gradient{
+  background-image: var(--bs-gradient);
 }
 
 @media (min-width: 100%) {
   .container {
     max-width: 600px;
+   
   }
 }
 
