@@ -63,8 +63,60 @@ onMounted(() => {
 
 
 <template>
+
+
+  <div class="container-fluid mt-5">
+    <h1 class="text-center">Blog</h1>
+    <br />
+    <br />
+
+    <p class="text-center">
+      Töltsd fel ide kedvenc fotóidat, kedvenc gyűjteményed, kedvenc AI
+      generált LEGO képedet.
+    </p>
+    <br />
+    <p class="text-center">
+      Kérlek tartsd tiszteletben a többi látogatót, ne légy tiszteletlen és ne
+      sértsd meg a weboldal "házirendjét".
+    </p>
+
+    <div class="mt-4">
+      <div v-if="isLoggedIn" class="card p-4">
+        <h2 class="mb-4 text-center">Create a new post</h2>
+        <form @submit.prevent="createPost">
+          <div class="form-group mb-3">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              v-model="newPost.title"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="content">Content:</label>
+            <textarea
+              v-model="newPost.content"
+              class="form-control"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Create Post</button>
+        </form>
+      </div>
+
+      <h2 class="mt-5 text-center">All Posts</h2>
+      <div v-for="post in posts" :key="post.id" class="mb-4 p-3 border rounded">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <p><strong>By:</strong> {{ post.user.name }}</p>
+      </div>
+    </div>
+  </div>
+
   <div>
-    <h1>Blog</h1>
+    <!-- <h1>Blog</h1>
     <br>
     <br>
 
@@ -73,8 +125,8 @@ onMounted(() => {
     <p>Kérlek tartsd tiszteletben a többi látogatót, ne légy tiszteletlen és ne sértsd meg a weboldal "házirendjét".</p>
 
     <div>
-      <!-- <h1>Blog</h1> -->
-      <div v-if="isLoggedIn">
+       <h1>Blog</h1> --> -->
+      <!-- <div v-if="isLoggedIn">
         <h2>Create a new post</h2>
         <form @submit.prevent="createPost">
           <div>
@@ -94,7 +146,7 @@ onMounted(() => {
         <p>{{ post.content }}</p>
         <p>By: {{ post.user.name }}</p>
       </div>
-    </div>
+    </div> --> 
 
     <body>
       <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -555,14 +607,63 @@ onMounted(() => {
 
 <style scoped>
 /* Add your styles here */
-
-h1 {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0ae9c0 0%, #ACB6E5 100%); /* Színátmenetes háttér */
+  min-height: 100vh; /* Az oldal teljes magasságában */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
+h1,
 p {
-  display: flex;
-  justify-content: center;
+  margin-bottom: 1.5rem;
 }
+
+.card {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  background: #fff; /* Fehér háttér a kártyáknak */
+  padding: 20px;
+  border-radius: 10px; /* Lekerekített sarkok */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Finom árnyék */
+}
+
+h2 {
+  color: #007bff;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.container {
+  max-width: 100%;
+}
+
+@media (min-width: 100%) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+
+
 </style>
